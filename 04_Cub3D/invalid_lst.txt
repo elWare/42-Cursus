@@ -1,0 +1,16 @@
+maps_invalid/bad_ext.cuv
+maps_invalid/bad_tex.cub
+maps_invalid/empty_map.cub
+maps_invalid/invalid_char.cub
+maps_invalid/invalid_rgb_color.cub
+maps_invalid/map_0player.cub
+maps_invalid/map_2player.cub
+maps_invalid/map_bad_infoline.cub
+maps_invalid/map_bad_rgbformat.cub
+maps_invalid/map_complex.cub
+maps_invalid/map_dup_info2.cub
+maps_invalid/map_dup_info.cub
+maps_invalid/map_invalidchar.cub
+maps_invalid/map_invalid_spaces.cub
+maps_invalid/map_open.cub
+maps_invalid/map_splittered.cub

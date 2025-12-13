@@ -1,0 +1,17 @@
+{
+	"files.associations": {
+		"map": "c",
+		"system_error": "c",
+		"format": "c",
+		"__hash_table": "c",
+		"__tree": "c",
+		"deque": "c",
+		"functional": "c",
+		"type_traits": "c",
+		"version": "c"
+	},
+	"[c]": {
+		  "editor.defaultFormatter": "keyhr.42-c-format"
+		},
+		"cmake.sourceDirectory": "/home/spaceman/42Formacion/repors/repo_final/04_Cub3D/MLX42"
+}

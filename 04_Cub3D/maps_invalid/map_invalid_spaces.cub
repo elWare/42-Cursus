@@ -1,0 +1,11 @@
+NO ./imgs/wall_04.png
+SO ./imgs/wall_01.png
+EA ./imgs/wall_03.png
+WE ./imgs/wall_02.png
+
+C 105,105,105
+F 127,127,127
+
+1111111
+10 N 01
+1111111

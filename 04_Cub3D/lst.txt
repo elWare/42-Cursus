@@ -1,0 +1,8 @@
+maps/complex01.cub
+maps/complex02.cub
+maps/map0.cub
+maps/map1.cub
+maps/map2.cub
+maps/map3.cub
+maps/map4.cub
+maps/map5.cub
