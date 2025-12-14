@@ -4,7 +4,7 @@
 
 ## 🚀 Descripción
 
-El proyecto Cub3D es una recreación en 3D de un laberinto desde una perspectiva en primera persona, inspirándose en el juego Wolfenstein 3D [2]. El objetivo es aplicar conceptos matemáticos y algoritmos para crear una representación gráfica "realista" del interior de un laberinto [2].
+El proyecto Cub3D es una recreación en 3D de un laberinto desde una perspectiva en primera persona, inspirándose en el juego Wolfenstein 3D. El objetivo es aplicar conceptos matemáticos y algoritmos para crear una representación gráfica "realista" del interior de un laberinto.
 
 ## 📖 Índice
 
@@ -20,7 +20,7 @@ El proyecto Cub3D es una recreación en 3D de un laberinto desde una perspectiva
 
 ## 🚀 Introducción
 
-Este proyecto busca replicar la experiencia de un juego tipo Wolfenstein 3D utilizando el principio de ray-casting [2].  Se pretende aplicar el algoritmo Digital Differential Analyzer (DDA) para el cálculo de intersecciones de rayos con las paredes del mapa [3].
+Este proyecto busca replicar la experiencia de un juego tipo Wolfenstein 3D utilizando el principio de ray-casting [2].  Se pretende aplicar el algoritmo Digital Differential Analyzer (DDA) para el cálculo de intersecciones de rayos con las paredes del mapa.
 
 ## 🎯 Requisitos
 
@@ -59,15 +59,15 @@ Para ejecutar el programa compilado:
 
 ## 🎯 Objetivos del Proyecto
 
-*   Aplicar conceptos de rigor, uso de C y algoritmos básicos [2].
-*   Mejorar habilidades en ventanas, colores, eventos y manejo de gráficos [2].
-*   Experimentar con aplicaciones prácticas de la matemática [2].
-*   Implementar el algoritmo Digital Differential Analyzer (DDA) [3].
+*   Aplicar conceptos de rigor, uso de C y algoritmos básicos.
+*   Mejorar habilidades en ventanas, colores, eventos y manejo de gráficos.
+*   Experimentar con aplicaciones prácticas de la matemática.
+*   Implementar el algoritmo Digital Differential Analyzer (DDA).
 
 ## 🚧 Limitaciones y Desafíos
 
-*   Uso obligatorio de la biblioteca miniLibX [2].
-*   Gestión fluida de la ventana (cambios, minimización) [2].
+*   Uso obligatorio de la biblioteca miniLibX.
+*   Gestión fluida de la ventana (cambios, minimización).
 
 ## 📚 Documentación
 
@@ -80,6 +80,7 @@ Para una documentación más detallada, consulta el código fuente y los archivo
 ## 🧑‍💻Autor
 
 Este proyecto fue desarrollado como parte del currículo del nivel 4 de la escuela 42.
+
 Nombre: Juan Jesús Marquez
 GitHub: https://github.com/elWare
 42 Profile: https://profile-v3.intra.42.fr/users/jumarque
