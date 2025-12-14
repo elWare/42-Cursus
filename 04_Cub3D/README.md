@@ -1,6 +1,6 @@
 # Cub3D
 
-[![Build Status](https://img.shields.io/badge/status-working-green)](https://img.shields.io/badge/status-working-green)
+[![Build Status](https://img.shields.io/badge/status-finished-green)](https://img.shields.io/badge/status-finished-green)
 
 ## 🚀 Descripción
 
