@@ -1,45 +1,81 @@
 # Cub3D
 
-Proyecto obligatorio del nivel 4 de 42. Implementación de un motor de renderizado 3D en primera persona utilizando el algoritmo de raycasting y la biblioteca miniLibX.
+[![Build Status](https://img.shields.io/badge/status-working-green)](https://img.shields.io/badge/status-working-green)
 
-## Características
+## 🚀 Descripción
 
-- Representación 3D realista del interior de un laberinto desde una perspectiva en primera persona
-- Movimiento del jugador con las teclas W, A, S, D
-- Rotación de la vista con las flechas izquierda y derecha
-- Cierre del programa con ESC o haciendo clic en la cruz roja
-- Configuración de colores para el suelo y el techo
-- Carga de mapas desde archivos con extensión .cub
+El proyecto Cub3D es una recreación en 3D de un laberinto desde una perspectiva en primera persona, inspirándose en el juego Wolfenstein 3D [2]. El objetivo es aplicar conceptos matemáticos y algoritmos para crear una representación gráfica "realista" del interior de un laberinto [2].
 
-## Requisitos
+## 📖 Índice
 
-- Sistema operativo Linux
-- miniLibX
-- Biblioteca math (-lm)
-- Funciones de sistema: open, close, read, write, printf, malloc, free, perror, strerror, exit, gettimeofday
+1.  [Introducción](#-introducción)
+2.  [Requisitos](#-requisitos)
+3.  [Instalación](#-instalación)
+4.  [Uso](#-uso)
+5.  [Compilación](#-compilación)
+6.  [Objetivos del Proyecto](#-objetivos-del-proyecto)
+7.  [Limitaciones y Desafíos](#-limitaciones-y-desafíos)
+8.  [Documentación](#-documentación)
+9.  [Créditos](#-créditos)
 
-## Instalación
+## 🚀 Introducción
 
+Este proyecto busca replicar la experiencia de un juego tipo Wolfenstein 3D utilizando el principio de ray-casting [2].  Se pretende aplicar el algoritmo Digital Differential Analyzer (DDA) para el cálculo de intersecciones de rayos con las paredes del mapa [3].
+
+## 🎯 Requisitos
+
+*   Entorno de desarrollo C
+*   Biblioteca miniLibX (ya sea la versión del sistema operativo o compilada desde la fuente)
+*   Biblioteca libft (proporcionada)
+*   Conocimientos básicos de programación en C
+
+## 🛠️ Instalación
+
+1.  Clonar el repositorio:
+    ```bash
+    git clone --recursive https://github.com/tu_usuario/cub3D.git
+    ```
+2.  Instalar las dependencias (si es necesario, dependiendo de cómo se gestione libft y miniLibX).  Consultar la documentación de libft y miniLibX para obtener instrucciones específicas.
+
+## 💻 Uso
+
+Para ejecutar el programa, simplemente compila el código y ejecuta el ejecutable generado.
 ```bash
-git clone --recursive https://github.com/tu_usuario/cub3D.git
-cd cub3D
-make
-./cub3D map.cub
+./cub3D [archivo_mapa.cub]
 ```
 
-## Controles
+## ⚙️ Compilación
 
-- W, A, S, D: Movimiento
-- Flechas izquierda/derecha: Rotación de vista
-- ESC: Cerrar programa
-- Click en la cruz roja: Cerrar programa
+Para compilar el proyecto:
 
-## Estructura del Proyecto
+```bash
+make
+```
 
-- Implementación del algoritmo de raycasting
-- Gestión de ventanas y eventos con miniLibX
-- Manejo de mapas y archivos de configuración
-- Renderizado 3D con proyección de rayos
+Para ejecutar el programa compilado:
+```bash
+./cub3d
+```
+
+## 🎯 Objetivos del Proyecto
+
+*   Aplicar conceptos de rigor, uso de C y algoritmos básicos [2].
+*   Mejorar habilidades en ventanas, colores, eventos y manejo de gráficos [2].
+*   Experimentar con aplicaciones prácticas de la matemática [2].
+*   Implementar el algoritmo Digital Differential Analyzer (DDA) [3].
+
+## 🚧 Limitaciones y Desafíos
+
+*   Uso obligatorio de la biblioteca miniLibX [2].
+*   Gestión fluida de la ventana (cambios, minimización) [2].
+
+## 📚 Documentación
+
+Para una documentación más detallada, consulta el código fuente y los archivos de encabezado.
+
+## 🤝 Créditos
+
+*   [Enlace al juego original](http://users.atw.hu/wolf3d/)
 
 ## 🧑‍💻Autor
 
