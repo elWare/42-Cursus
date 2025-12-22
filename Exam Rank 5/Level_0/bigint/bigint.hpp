@@ -4,105 +4,113 @@
 
 class bigint {
 	private:
-		std::string num;
-		void remove_zeros()
-		{
-			while(num.length() > 1 && num[0] == '0')
-				num.erase(0, 1);
+		std::string value;
+		void remove_zero() {
+			while (value.length() > 1 && value[0] == '0')
+				value.erase(0, 1);
 		}
-
+	
 	public:
-		bigint() : num("0") {}
-		bigint(const std::string &n) : num(n){ remove_zeros();}
-		bigint(unsigned int n) : num(std::to_string(n)) {}
-
-	bigint operator+(const bigint &other) const 
-	{
-		std::string result;
-		std::string n1 = num;
-		std::string n2 = other.num;
-		while (n1.length() < n2.length())
-			n1 = '0' + n1;
-		while (n2.length() < n1.length())
-			n2 = '0' + n2;
-		int carry = 0;
-		for (int i = n1.length() - 1; i >= 0; --i) {
-			int digit_sum = (n1[i] - '0') + (n2[i] - '0') + carry;
-			carry = digit_sum / 10;
-			result = char((digit_sum % 10) + '0') + result;
+		bigint() : value("0") {}
+		bigint(const std::string &other) : value(other) {
+			remove_zero();
 		}
-		if (carry)
-			result = char(carry + '0') + result;
-		return bigint(result);
-	}
-	bigint	&operator+=(const bigint &other)
-	{
-		*this = *this + other;
-		return *this;
-	}
+		bigint(unsigned int other) : value(std::to_string(other)) {}
+		~bigint() {}
+	
+	bigint	operator+(const bigint &other) const {
+		std::string	result;
+		std::string	val01 = this->value;
+		std::string	val02 = other.value;
+		int		carry = 0;
+		int		sum = 0;
 
-	bigint	&operator++()
-	{
-		*this = *this + bigint("1");
-		return *this;
-	}
-	bigint	operator++(int)
-	{
-		bigint temp = *this;
-		++(*this);
-		return temp;
-	}
-
-// shifter operator ------------------------------------------------------
-	bigint	operator<<(int shift) const
-	{
-		if (num == "0")
-			return *this;
-		return (bigint(num + std::string(shift, '0')));
-	}
-	bigint	&operator>>(int shift)
-	{
-		if (shift >= (int)num.length())
-			num = "0";
-		else
+		while (val01.size() < val02.size())
+			val01 = '0' + val01;
+		while (val01.size() > val02.size())
+			val02 = '0' + val02;
+		for ( int i = val01.size() - 1; i >= 0; i--)
 		{
-			num = num.substr(0, num.length() - shift);
-			remove_zeros();
+			sum = (val01[i] - '0') + (val02[i] - '0') + carry;
+			carry = sum / 10;
+			sum = sum % 10;
+			result.insert(result.begin(), '0' + sum);
 		}
+		if (carry) { 
+			result.insert(result.begin(), '0' + carry);
+		}
+		bigint res(result);
+		res.remove_zero();
+		return (res);
+	}
+	bigint	operator+=(const bigint &other) {
+		*this = *this + other;
+		return (*this);
+	}
+	bigint	operator++() {
+		*this = *this + bigint("1");
+		return (*this);
+	}
+	bigint	operator++(int) {
+		bigint	tmp = *this;
+		++(*this);
+		return (tmp);
+	}
+	
+	bigint	operator<<(int shift) const {
+		if (value == "0") 
+			return (bigint("0"));
+		return (bigint(value + std::string(shift, '0')));
+	}
+	bigint	operator>>(size_t shift) const {
+		bigint	result;
+
+		if (shift >= this->value.size())
+			return (bigint("0"));
+		result.value = this->value.substr(0, value.size() - shift);
+		result.remove_zero();
+		return (result);
+	}
+	bigint	operator<<=(size_t shift) {
+		*this = *this << shift;
+		return (*this);
+	}
+	bigint	operator>>=(size_t shift) {
+		*this = *this >> shift;
+		return (*this);
+	}
+	bigint	operator>>=(const bigint &oth) {
+		int	shift = std::stoi(oth.value);
+
+		*this = *this >> shift;
 		return *this;
 	}
-	bigint &operator<<=(int shift) { *this = *this << shift; return *this; }
-	bigint &operator>>=(int shift) { *this = *this >> shift; return *this; }
-	bigint &operator>>=(const bigint &oth) { 
-		int shift = std::stoi(oth.num); *this = *this >> shift; return *this; }
 
-// logical operator 
-	bool operator== (const bigint &other) const
-	{
-		return (num == other.num);
+	// operadores lógicos
+	bool	operator<(const bigint &oth){
+		if (value.size() != oth.value.size())
+			return (value.size() < oth.value.size());
+		return (value < oth.value);
 	}
-	bool operator!= (const bigint &other) const
-	{
-		return !(num == other.num);
+	bool	operator>(const bigint &oth) {
+		if (value.size() != oth.value.size())
+			return (value.size() > oth.value.size());
+		return (value > oth.value);
 	}
-	bool	operator<(const bigint &other) const
-	{
-		if (num.length() != other.num.length())
-			return (num.length() < other.num.length());
-		return (num < other.num);
+	bool	operator<=(const bigint &oth) {
+		return !(*this > oth);
 	}
-	bool	operator<=(const bigint &other) const
-	{
-		return (*this < other || *this == other);
+	bool	operator>=(const bigint &oth) {
+		return !(*this < oth);
 	}
-	bool	operator>(const bigint &other) const
-	{
-		return !(*this < other);
+	bool	operator==(const bigint &oth) {
+		return (value == oth.value);
 	}
-	bool	operator>=(const bigint &other) const
-	{
-		return !(*this <= other);
+	bool	operator!=(const bigint &oth) {
+		return (value != oth.value);
 	}
-// output operator ------------------------------------------------------
-	friend std::ostream &operator<<(std::ostream &os, const bigint &b) { os << b.num; return os; }
+	friend	std::ostream &operator<<(std::ostream &os, const bigint &oth) {
+		os << oth.value;
+		return (os);
+	}
 };
