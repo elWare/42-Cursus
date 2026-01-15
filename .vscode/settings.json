@@ -63,5 +63,6 @@
 		"variant": "cpp",
 		"format": "cpp",
 		"__nullptr": "cpp"
-	}
+	},
+	"cmake.sourceDirectory": "/home/spaceman/42Formacion/repors/repo_final/04_Cub3D/MLX42"
 }

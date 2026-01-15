@@ -1,4 +1,4 @@
-#include "vect2.hpp"        // incluye la definición de la clase vect2
+#include "practice.hpp"        // incluye la definición de la clase vect2
 #include <iostream>			// incluye la biblioteca de entrada/salida para mostrar resultados
 
 int main() 
@@ -23,7 +23,7 @@ int main()
 	std::cout << (v2 = 3 * v2) << std::endl; 							// 9, 18
 	std::cout << (v2 += v2 += v3) << std::endl; 						// 20, 40
 	std::cout << (v1 *= 42) << std::endl; 								// -84, -168
-	std::cout << (v1 = v1 - v1 + v1) << std::endl;						// 0, 0
+	std::cout << "Suma 0: " << (v1 = v1 - v1 + v1) << std::endl;						// 0, 0
 	std::cout << "v1: " << v1 << std::endl;			// 0, 0
 	std::cout << "v2: " << v2 << std::endl;			// 20, 40
 	std::cout << "-v2: " << -v2 << std::endl;		// -20, -40
@@ -34,5 +34,5 @@ int main()
 	std::cout << "v1 == v3: " << (v1 == v3) << std::endl;	// 0
 	std::cout << "v1 == v1: " << (v1 == v1) << std::endl;	// 1
 	std::cout << "v1 != v3: " << (v1 != v3) << std::endl;	// 1
-	std::cout << "v1 != v1: " << (v1 != v1) << std::endl;	// 0
+	std::cout << "v1 != v1: " << (v1 != v1) << std::endl;	// 0 */
 }

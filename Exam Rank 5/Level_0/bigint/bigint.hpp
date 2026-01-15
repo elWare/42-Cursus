@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <sstream>
+#include <cstdlib>
 
 class bigint {
 	private:
@@ -15,7 +17,12 @@ class bigint {
 		bigint(const std::string &other) : value(other) {
 			remove_zero();
 		}
-		bigint(unsigned int other) : value(std::to_string(other)) {}
+		bigint(unsigned long long other) {
+			std::ostringstream os;
+
+			os << other;
+			value = os.str();
+		}
 		~bigint() {}
 	
 	bigint	operator+(const bigint &other) const {
@@ -80,9 +87,10 @@ class bigint {
 		return (*this);
 	}
 	bigint	operator>>=(const bigint &oth) {
-		int	shift = std::stoi(oth.value);
-
-		*this = *this >> shift;
+		char *endptr;
+		int	shift = strtol(oth.value.c_str(), &endptr, 10);
+		if (*endptr == '\0')
+			*this = *this >> shift;
 		return *this;
 	}
 
