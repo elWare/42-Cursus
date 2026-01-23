@@ -1,75 +1,63 @@
-#include "bigint.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/15 13:29:25 by jumarque          #+#    #+#             */
+/*   Updated: 2026/01/20 10:39:48 by jumarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include <string>
-
-void testAddition() {
-    std::cout << "\nTesting Addition:\n";
-    bigint num1("123456789012345678901234567890");
-    bigint num2("987654321098765432109876543210");
-
-    std::cout << "num1 + num2 = " << (num1 + num2) << "\n";
-
-    // Caso límite
-    bigint bigNum("999999999999999999999999999999");
-    bigint smallNum("1");
-    std::cout << "bigNum + smallNum = " << (bigNum + smallNum) << "\n";
-}
-
-void testIncrement() {
-    std::cout << "\nTesting Increment:\n";
-    bigint num("12345678901234567890");
-
-    std::cout << "num++ = " << (num++) << ", num = " << num << "\n";
-    std::cout << "++num = " << (++num) << "\n";
-}
-
-void testComparisons() {
-    std::cout << "\nTesting Comparisons:\n";
-    bigint a("1000");
-    bigint b("2000");
-
-    std::cout << "(a < b): " << (a < b) << ", "
-              << "(b > a): " << (b > a) << "\n";
-
-    // Caso límite: números grandes iguales
-    bigint bigNum1("999999999999999999999999999999");
-    bigint bigNum2(bigNum1);
-    std::cout << "(bigNum1 == bigNum2): " << (bigNum1 == bigNum2) << "\n";
-}
-
-void testShifts() {
-    std::cout << "\nTesting Shift Operations:\n";
-    bigint num("1234");
-	bigint bigNum1("10");
-
-    // Left shift
-    std::cout << "(num << 5) = " << (num << 5) << "\n";
-
-    // Right shift
-    std::cout << "(num >> 2) = " << (num >> 2) << "\n";
-	bigint num2("12345678901");
-	std::cout << "(num >>= bigNum1) = " << (num2 >>= bigNum1) << "\n";
-}
-
-void testEdgeCases() {
-    std::cout << "\nTesting Edge Cases:\n";
-    
-    bigint zero("0");
-    bigint negative("-12345678901234567890");
-
-    // Zero addition
-    std::cout << "zero + num = " << (zero + bigint("123")) << "\n";
-
-    // Negative number test
-    std::cout << "negative: " << negative << "\n";
-}
+#include "practice.hpp"
 
 int main() {
-    testAddition();
-    testIncrement();
-    testComparisons();
-    testShifts();
-    testEdgeCases();
+    const bigint a(42);
+    bigint b(21), c, d(1337), e(d);
 
-    return 0;
+    std::cout << "a = " << a << std::endl;      // muestra: a = 42
+    std::cout << "b = " << b << std::endl;      // muestra: b = 21
+    std::cout << "c = " << c << std::endl;      // muestra: c = 0
+    std::cout << "d = " << d << std::endl;      // muestra: d = 1337
+    std::cout << "e = " << e << std::endl;      // muestra: e = 1337
+
+    std::cout << "a + b = " << a + b << std::endl;          // muestra: a + b = 63
+    std::cout << "(c += a) = " << (c += a) << std::endl;    // muestra: (c += a) = 42
+
+    std::cout << "b = " << b << std::endl;          // muestra: b = 21
+    std::cout << "++b = " << ++b << std::endl;      // muestra: ++b = 22
+    std::cout << "b++ = " << b++ << std::endl;      // muestra: b++ = 22
+
+    std::cout << "(b << 10) + 42 = " << ((b << 10) + 42) << std::endl;      // muestra: (b << 10) + 42 = 230000000042
+    std::cout << "(d <<= 4) = " << (d <<= 4) << std::endl;                  // muestra: (d <<= 4) = 13370000
+    std::cout << "(d >>= 2) = " << (d >>= (const bigint)2) << std::endl;    // muestra: (d >>= 2) = 133700
+
+    std::cout << "a = " << a << std::endl;       // muestra: a = 42
+    std::cout << "d = " << d << std::endl;       // muestra: d = 133700
+
+    std::cout << "(d < a) = " << (d < a) << std::endl;      // muestra: 0
+    std::cout << "(d <= a) = " << (d <= a) << std::endl;    // muestra: 0 
+    std::cout << "(d > a) = " << (d > a) << std::endl;      // muestra: 1 
+    std::cout << "(d >= a) = " << (d >= a) << std::endl;    // muestra: 1 
+    std::cout << "(d == a) = " << (d == a) << std::endl;    // muestra: 0 
+    std::cout << "(d != a) = " << (d != a) << std::endl;    // muestra: 1
 }
+
+/* En ciencias de la computación, un bignum es un objeto que representa un número
+de precisión arbitraria. Esto resulta útil cuando deseas almacenar un número
+mayor que SIZE_MAX sin perder precisión alguna. Comúnmente se logra almacena un
+array o una cadena que contiene las diferentes "partes" del número.
+
+Crea una clase llamada `bigint` que almacenará un entero de precisión arbitraria
+sin signo.Tu clase debe soportar la suma, comparación y desplazamiento de
+dígitos (similar al desplazamiento de bits, pero en lugar de desplazar los bits
+se desplaza los dígitos en base 10;
+	por ejemplo: `(42 << 3 == 42000)` y `(1337 >> 2 == 13)`).
+
+Tu `bigint` debe ser impreso utilizando el operador `<<` (en base 10) y la salida
+no debe contener ceros a la izquierda.
+
+Encontrarás un archivo principal en este directorio que debe funcionar con tu clase.
+*/

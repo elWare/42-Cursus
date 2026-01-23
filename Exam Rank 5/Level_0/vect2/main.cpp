@@ -8,7 +8,7 @@ int main()
 	const vect2 v3(v2);		// 1, 2
 	vect2 v4 = v2;			// 1, 2
 
-	std::cout << "v1: " << v1 << std::endl;	// 0, 1
+	std::cout << "v1: " << v1 << std::endl;	// 0, 0
 	std::cout << "v1: " << "{" << v1[0] << "," << v1[1] << "}" << std::endl;	// 0, 1
 	std::cout << "v2: " << v2 << std::endl;	// 1, 2
 	std::cout << "v3: " << v3 << std::endl;	// 1, 2
