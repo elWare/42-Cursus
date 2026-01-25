@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:29:15 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/25 10:45:12 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/25 13:40:23 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+#include <Form.hpp>
 
 #define	MAX_GRADE 1
 #define	MIN_GRADE 150
@@ -34,7 +35,8 @@ class Bureaucrat {
 		int		getGrade() const;
 		void	incrementGrade();
 		void	decrementGrade();
-		bool	check_value(int grade);
+		virtual bool	checkValue(int grade);
+		void	signForm(Form &form);
 
 		class	GradeTooHighException : public std::out_of_range {
 			public:

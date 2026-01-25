@@ -6,13 +6,13 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/25 10:45:23 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/25 13:40:14 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-bool Bureaucrat::check_value(int grade) {
+bool Bureaucrat::checkValue(int grade) {
 	if (grade < MAX_GRADE) {
 		throw	GradeTooHighException("Out of max range");
 		return (false);
@@ -26,15 +26,15 @@ bool Bureaucrat::check_value(int grade) {
 }
 
 Bureaucrat::Bureaucrat() : _name("Default_name"), _grade(MIN_GRADE) {
-	std::cout << "Default constructor call" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) , _grade(oth_buro._grade) {
-	std::cout << "Copy constructor call" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 }
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
 	try
 	{
-		if (check_value(grade))
+		if (checkValue(grade))
 			_grade = grade;
 	}
 	catch(const std::out_of_range& e)
@@ -67,7 +67,7 @@ int	Bureaucrat::getGrade() const {
 void	Bureaucrat::incrementGrade() {
 	try
 	{
-		if (check_value(_grade - 1))
+		if (checkValue(_grade - 1))
 			_grade--;
 	}
 	catch(const std::out_of_range& e)
@@ -78,7 +78,7 @@ void	Bureaucrat::incrementGrade() {
 void	Bureaucrat::decrementGrade() {
 	try
 	{
-		if (check_value(_grade + 1))
+		if (checkValue(_grade + 1))
 			_grade++;
 			
 	}
@@ -86,4 +86,11 @@ void	Bureaucrat::decrementGrade() {
 	{
 		std::cerr << e.what() << '\n';
 	}
+}
+
+void	Bureaucrat::signForm(Form &form) {
+	if (form.beSigned(*this))
+		std::cout << Bureaucrat::getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << Bureaucrat::getName() << " couldn't sig " << form.getName() << " because " << form.getGradeToSign() << std::endl;
 }
