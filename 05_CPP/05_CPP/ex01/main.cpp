@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 13:45:23 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/25 13:46:34 by jumarque         ###   ########.fr       */
+/*   Created: 2026/01/25 19:45:10 by jumarque          #+#    #+#             */
+/*   Updated: 2026/01/26 10:31:47 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,78 +19,89 @@ using std::endl;
 
 int main() {
 
-	cout << "\n* * * 📜 Welcome to the Bureaucrat and Form test 📜 * * *" << endl;
+	const std::string blue = "\033[1;34m";
+	const std::string reset = "\033[0m";
 
-	cout << "\n    * * * * * * *  🧪 General test  🧪  * * * * * * *    \n" << endl;{
+	cout << "\n* * * *  📜 Welcome to the Bureaucrat and Form test 📜  * * * *" << endl;
 
-		Form	a("Form", 66, 66);		// Create a form with grade to sign and execute 66
-		Form	b(a);					// Copy the form a
-		Form	c = b;					// Copy the form b
-
-		cout << "Form a: " << a.getName() << "🖊️ grade to sign: " << a.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << a.getGradeToExec() << endl;
-		cout << "Form b: " << b.getName() << "🖊️ grade to sign: " << b.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << b.getGradeToExec() << endl;
-		cout << "Form c: " << c.getName() << "🖊️ grade to sign: " << c.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << c.getGradeToExec() << endl << "\n";
-
-	}
-
-	cout << "\n* * * * * * *  📉  Grade low and high  📈   * * * * * * *\n" << endl;{
-
+	cout << blue <<"\nSomeone has had the happy idea of ​​creating a form that requires" << endl;
+	cout << "a grade 0 signature.\n" << reset << endl; {
 		try {
-			Form a(" A ", MIN_GRADE - 1, MIN_GRADE - 1);	// Value of grade is too low now
+			Form f("AJ066", 0, 66);		// Create a form with grade to sign and execute 0
 		} catch (std::exception &e) {
-			cerr << e.what() << endl;					// Print the exception
-		}
-
-		try {
-			Form b(" B ", MAX_GRADE + 1, MAX_GRADE + 1);	// Value of grade is too high now
-			cout << b.getName() << "🖊️ grade to sign: " << b.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << b.getGradeToExec() << endl;
-		} catch (std::exception &e) {
-			cerr << e.what() << endl;					// Print the exception
-		}
-
-	}
-
-	cout << "\n* * * * * * *  📝 Able to sign all forms 📝 * * * * * * *\n" << endl;{
-
-		try {
-
-			Bureaucrat a1("Donald ", MAX_GRADE);				// Create a bureaucrat with the maximum grade
-			cout << a1 << endl;
-
-			Form f1("Form 1 ", MAX_GRADE, 20);				// Create a form with grade to sign and execute 20
-			cout << f1.getName() << " 🖊️  grade to sign: " << f1.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << f1.getGradeToExec() << endl;
-
-			Form f2("Form 2 ", 66, MIN_GRADE);				// Create a form with grade to sign 66 and
-			cout << f2.getName() << " 🖊️  grade to sign: " << f2.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << f2.getGradeToExec() << endl;
-
-			f1.beSigned(a1);								// Sign the form 1
-			cout << f1 << endl;								// Print the form 1
-			f2.beSigned(a1);								// Sign the form 2
-			cout << f2 << endl;								// Print the form 2
-		} catch (std::exception &e) {
-			cerr << e.what() << endl;						// Print the exception
+			cerr << e.what() << endl;	// Print the exception
 		}
 	}
 
-	cout << "\n* * * * * *  🚫 Unable to sign all forms 🚫   * * * * * *\n" << endl;{
-
+	cout << blue <<"\nNow another enlightened one, has gone further with another form" << endl;
+	cout << "that requires a degree of execution 0\n" << reset << endl; {
 		try {
-
-			Bureaucrat a2("Joe ", MIN_GRADE);				// Create a bureaucrat with the maximum grade
-			cout << a2 << endl;
-
-			Form f3("Form 3 ", MIN_GRADE, 20);				// Create a form with grade to sign and execute 20
-			cout << f3.getName() << " 🖊️  grade to sign: " << f3.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << f3.getGradeToExec() << endl;
-
-			Form f4("Form 4 ", 66, MAX_GRADE);				// Create a form with grade to execute 66
-			cout << f4.getName() << " 🖊️  grade to sign: " << f4.getGradeToSign() << " 🧑‍⚖️ grade to execute: " << f4.getGradeToExec() << endl;
-
-			f3.beSigned(a2);								// Sign the form 3
-			cout << f3 << endl;								// Print the form 3
-			f4.beSigned(a2);								// Sign the form 4
-			cout << f4 << endl;								// Print the form 4
+			Form f("BF007", 66, 0);		// Create a form with grade to sign and execute 0
 		} catch (std::exception &e) {
-			cerr << e.what() << endl;						// Print the exception
+			cerr << e.what() << endl;	// Print the exception
+		}
+	}
+
+	cout << blue <<"\nTo correct the first error.. a new form has been published that" << endl;
+	cout << "requires a grade 151 signature.\n" << reset << endl; {
+		try {
+			Form f("AJ066N", 151, 66);		// Create a form with grade to sign and execute 0
+		} catch (std::exception &e) {
+			cerr << e.what() << endl;	// Print the exception
+		}
+	}
+
+	cout << blue <<"\nThis measure hasn't come alone, now the second measure requires" << endl;
+	cout << "execution 151.\n" << reset << endl; {
+		try {
+			Form B("BF007N", 151, 0);		// Create a form with grade to sign and execute 0
+		} catch (std::exception &e) {
+			cerr << e.what() << endl;	// Print the exception
+		}
+	}
+
+	// main.cpp corregido
+	cout << blue <<"\nIt seems that a form has been created with a correct grade: 50." << endl;
+	cout << "It has been handed over to a grade 100 bureaucrat for signature.\n" << reset << endl; {  
+		try {
+			Form f("CF123", 50, 50);
+			Bureaucrat b("John Doe", 40);
+			cout << f << endl;
+			cout << b << endl;
+			// Se recomienda usar b.signForm(f) como se discutió anteriormente
+			// para una mejor lógica, pero f.beSigned(b) también funcionará
+			// para demostrar la captura de la excepción.
+			b.signForm(f); 
+		} catch (const std::exception &e) {
+			// Ahora la excepción será capturada aquí y el programa no se cerrará
+			cerr << "Exception caught as expected: " << e.what() << endl;
+		}
+	}
+
+	cout << blue <<"\nNow let's create a form that requires a grade 50 execution and" << endl;
+	cout << "a bureaucrat with grade 100.\n" << reset << endl; {
+		Form f("CF456", 50, 40);		// Create a form with grade to sign and execute 50
+		Bureaucrat b("Jane Doe", 30);
+		try {
+			cout << f << endl;
+			cout << b << endl;
+			f.beSigned(b);					// Attempt to sign the form
+		} catch (std::exception &e) {
+			cerr << e.what() << endl;	// Print the exception
+		}
+		try {
+		// Create a bureaucrat with grade 100
+			cout << f << endl;
+			cout << b << endl;
+			// Attempt to execute the form
+			cout << "Attempting to execute the form..." << endl;
+			if (b.getGrade() >= f.getGradeToExec()) {
+				throw Form::GradeTooLowException("Grade is too low to exec.");
+			} else {
+				cout << "Form executed successfully." << endl;
+			}
+		} catch (std::exception &e) {
+			cerr << e.what() << endl;	// Print the exception
 		}
 	}
 

@@ -6,12 +6,16 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:20:16 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/25 13:46:48 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 10:02:31 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Bureaucrat.hpp"
+#include <iostream>
+#include <exception>
+
+class Bureaucrat;
 
 class Form
 {
@@ -38,7 +42,7 @@ public:
 	bool	getIsSigned() const;
 	const std::string getName() const;
 
-	bool	beSigned(const Bureaucrat &buro);
+	void	beSigned(Bureaucrat &buro);
 
 	// Exceptions
 
@@ -50,7 +54,6 @@ public:
 		public:
 			GradeTooLowException(const char *message) : std::out_of_range(message) {}
 	};
+	friend std::ostream &operator<<(std::ostream &os, const Form &form);
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &form) {
-}

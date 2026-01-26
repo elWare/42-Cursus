@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/25 13:40:14 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 09:59:10 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 bool Bureaucrat::checkValue(int grade) {
 	if (grade < MAX_GRADE) {
-		throw	GradeTooHighException("Out of max range");
+		throw	Bureaucrat::GradeTooHighException("Out of max range");
 		return (false);
 	}
 	else if (grade > MIN_GRADE) {
-		throw	GradeTooLowException("Out of min range");
+		throw	Bureaucrat::GradeTooLowException("Out of min range");
 		return (false);
 	}
 	else
@@ -36,10 +36,11 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
 	{
 		if (checkValue(grade))
 			_grade = grade;
+		else
+			_grade = MIN_GRADE;
 	}
 	catch(const std::out_of_range& e)
 	{
-		_grade = MIN_GRADE;
 		std::cerr << e.what() << '\n';
 	}
 	std::cout << "Named constructor call" << std::endl;
@@ -89,8 +90,13 @@ void	Bureaucrat::decrementGrade() {
 }
 
 void	Bureaucrat::signForm(Form &form) {
-	if (form.beSigned(*this))
+	try
+	{
+		form.beSigned(*this);
 		std::cout << Bureaucrat::getName() << " signed " << form.getName() << std::endl;
-	else
-		std::cout << Bureaucrat::getName() << " couldn't sig " << form.getName() << " because " << form.getGradeToSign() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << Bureaucrat::getName() << " couldn't sig " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
