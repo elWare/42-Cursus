@@ -6,23 +6,17 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/25 10:45:23 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:17:06 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-bool Bureaucrat::check_value(int grade) {
-	if (grade < MAX_GRADE) {
+void Bureaucrat::check_value(int grade) {
+	if (grade < MAX_GRADE) 
 		throw	GradeTooHighException("Out of max range");
-		return (false);
-	}
-	else if (grade > MIN_GRADE) {
+	else if (grade > MIN_GRADE) 
 		throw	GradeTooLowException("Out of min range");
-		return (false);
-	}
-	else
-		return (true);
 }
 
 Bureaucrat::Bureaucrat() : _name("Default_name"), _grade(MIN_GRADE) {
@@ -32,17 +26,17 @@ Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) , _gr
 	std::cout << "Copy constructor call" << std::endl;
 }
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
+	std::cout << "Named constructor call" << std::endl;
 	try
 	{
-		if (check_value(grade))
-			_grade = grade;
+		check_value(grade);
+		_grade = grade;
 	}
 	catch(const std::out_of_range& e)
 	{
 		_grade = MIN_GRADE;
 		std::cerr << e.what() << '\n';
 	}
-	std::cout << "Named constructor call" << std::endl;
 }
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Destructor call" << std::endl;
@@ -67,7 +61,7 @@ int	Bureaucrat::getGrade() const {
 void	Bureaucrat::incrementGrade() {
 	try
 	{
-		if (check_value(_grade - 1))
+		check_value(_grade - 1);
 			_grade--;
 	}
 	catch(const std::out_of_range& e)
@@ -78,9 +72,8 @@ void	Bureaucrat::incrementGrade() {
 void	Bureaucrat::decrementGrade() {
 	try
 	{
-		if (check_value(_grade + 1))
+		check_value(_grade + 1);
 			_grade++;
-			
 	}
 	catch(const std::out_of_range& e)
 	{

@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:05:35 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 10:06:21 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:25:56 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool Form::checkVaule(int grade) {
 }
 
 Form::Form(const std::string name, int gradeToSign, int gradeToExec) : _name(name) {
+	std::cout << "Default Form constructor called" << std::endl;
 	try {
 		if (this->checkVaule(gradeToSign))
 			_gradeToSign = gradeToSign;
@@ -34,7 +35,7 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExec) : _name(nam
 			_gradeToSign = 1;
 	}
 	catch(const std::out_of_range& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "Sign " << e.what() << '\n';
 	}
 	try {
 		if (this->checkVaule(gradeToExec))
@@ -43,10 +44,9 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExec) : _name(nam
 			_gradeToExec = 1;
 	}
 	catch (const std::out_of_range& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "Execution " << e.what() << '\n';
 	}
 	_isSigned = false;
-	std::cout << "Default Form constructor called" << std::endl;
 }
 
 Form::Form(const Form &oth) : _name (oth._name) {

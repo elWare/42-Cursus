@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:29:15 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 10:12:13 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:14:07 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Bureaucrat {
 		int		getGrade() const;
 		void	incrementGrade();
 		void	decrementGrade();
-		bool	check_value(int grade);
+		void	check_value(int grade);
 
 		class	GradeTooHighException : public std::out_of_range {
 			public:

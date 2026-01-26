@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 09:59:10 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:21:45 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) , _gr
 	std::cout << "Copy constructor called" << std::endl;
 }
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
+	std::cout << "Named constructor call" << std::endl;
 	try
 	{
 		if (checkValue(grade))
@@ -43,7 +44,6 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
 	{
 		std::cerr << e.what() << '\n';
 	}
-	std::cout << "Named constructor call" << std::endl;
 }
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Destructor call" << std::endl;
