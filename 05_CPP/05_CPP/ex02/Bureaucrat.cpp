@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 12:43:47 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/27 17:57:03 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,33 @@ void	Bureaucrat::decrementGrade() {
 	{
 		std::cerr << e.what() << '\n';
 	}
+}
+void	Bureaucrat::signForm(AForm &form) {
+	try
+	{
+		form.beSigned(*this);
+		std::cout << Bureaucrat::getName() << " signed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << Bureaucrat::getName() << " couldn't sig " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+bool Bureaucrat::getIsSigned(const AForm &oth) const {
+	return (oth.getIsSigned());
+}
+
+void	Bureaucrat::executeForm(AForm &aform) const {
+	try
+	{
+		aform.execute(*this);
+		
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	
 }

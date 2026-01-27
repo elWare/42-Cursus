@@ -6,59 +6,59 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:41:35 by sternero          #+#    #+#             */
-/*   Updated: 2026/01/23 18:58:15 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:31:27 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-using std::cout;			// cout to print
-using std::endl;			// endl to print new line
-using std::cerr;			// cerr to print errors
+using std::cout;
+using std::endl;
+using std::cerr;
 
 int main() {
 
 	cout << "\n* * * * * * *  General Data  * * * * * * *\n" << endl; {
 
-		Bureaucrat	a("Alice", 91);				// Constructor of Allice with grade 91
-		Bureaucrat	b(a);						// Copy constructor of Allice to b
-		Bureaucrat	c = b;						// Copy assignation operator of b to c
+		Bureaucrat	a("Alice", 91);
+		Bureaucrat	b(a);
+		Bureaucrat	c = b;
 
 		cout << endl;
 
-		cout << "a: " << a;						// Print a
-		cout << "b: " << b;						// Print b
-		cout << "c: " << c;						// Print c
+		cout << "a: " << a;
+		cout << "b: " << b;
+		cout << "c: " << c;
 
 		cout << endl;
 	}
 
 	cout << "\n* * * * * * Grade low and high * * * * * *\n" << endl; {
 
-		Bureaucrat a("A", MIN_GRADE + 1);	// Value of grade is too low now
-		Bureaucrat b("B", MAX_GRADE - 1);	// Value of grade is too high now
-			cout << b;							// Print the bureaucrat
+		Bureaucrat a("A", MIN_GRADE + 1);
+		Bureaucrat b("B", MAX_GRADE - 1);
+			cout << b;
 
 	}
 
 	cout << "* * *  Bad Increment and Decrement   * * *\n" << endl; {
 
 		try {
-			Bureaucrat c("Chief", MAX_GRADE);	// Create a bureaucrat with the maximum grade
+			Bureaucrat c("Chief", MAX_GRADE);
 			cout << "Trying to increment the grade of " << c.getName() << endl;
-			c.incrementGrade();					// Increment the grade of the bureaucrat
-			cout << c;							// Print the bureaucrat
+			c.incrementGrade();
+			cout << c;
 		} catch (std::exception &e) {
-			cerr << e.what() << endl;			// Print the exception
+			cerr << e.what() << endl;
 		}
 
 		try {
-			Bureaucrat d("Dodo", MIN_GRADE);	// Create a bureaucrat with the minimum grade
+			Bureaucrat d("Dodo", MIN_GRADE);
 			cout << "Trying to decrement the grade of " << d.getName() << endl;
-			d.decrementGrade();					// Decrement the grade of the bureaucrat
-			cout << d;							// Print the bureaucrat
+			d.decrementGrade();
+			cout << d;
 		} catch (std::exception &e) {
-			cerr << e.what() << endl;			// Print the exception
+			cerr << e.what() << endl;
 		}
 	
 	}
@@ -66,21 +66,21 @@ int main() {
 	cout << "* * * Possible operation with grade  * * *\n\n"; {
 
 		try {
-			Bureaucrat Donald("Donald", 9);		// Create a bureaucrat with the maximum grade
-			Donald.incrementGrade();			// Increment the grade of the bureaucrat
+			Bureaucrat Donald("Donald", 9);
+			Donald.incrementGrade();
 			cout << "After increment 📈 ... " << Donald;
 		} catch (std::exception &e) {
-			cerr << e.what() << endl;			// Print the exception
+			cerr << e.what() << endl;
 		}
 
 		cout << endl;
 
 		try {
-			Bureaucrat Joe("Joe", 149);			// Create a bureaucrat with the minimum grade
-			Joe.decrementGrade();				// Decrement the grade of the bureaucrat
+			Bureaucrat Joe("Joe", 149);
+			Joe.decrementGrade();
 			cout << "After decrement 📉 ... " << Joe;
 		} catch (std::exception &e) {
-			cerr << e.what() << endl;			// Print the exception
+			cerr << e.what() << endl;
 		}
 	
 	}

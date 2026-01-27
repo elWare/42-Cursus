@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:29:15 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 12:43:33 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/27 13:48:25 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+#include "AForm.hpp"
 
 #define	MAX_GRADE 1
 #define	MIN_GRADE 150
 
-
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -35,6 +36,9 @@ class Bureaucrat {
 		void	incrementGrade();
 		void	decrementGrade();
 		void	checkValue(int grade);
+		bool	getIsSigned(const AForm &aform) const;
+		void	signForm(AForm &aform);
+		void	executeForm(AForm &aform) const;
 
 		class	GradeTooHighException : public std::out_of_range {
 			public:
@@ -44,6 +48,9 @@ class Bureaucrat {
 			public:
 				GradeTooLowException(const char *message) : std::out_of_range(message) {}
 		};
+		class	ErrorSigned : public std::out_of_range {
+			public:
+				ErrorSigned(const char *message) : std::out_of_range(message) {}
+		};
+	friend std::ostream	&operator<<(std::ostream &os, const Bureaucrat &buro);
 };
-
-std::ostream	&operator<<(std::ostream &os, const Bureaucrat &buro);

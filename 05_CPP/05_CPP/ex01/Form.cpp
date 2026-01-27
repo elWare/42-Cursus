@@ -6,44 +6,36 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:05:35 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 11:25:56 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:42:21 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 
-bool Form::checkVaule(int grade) {
-	if (grade < MAX_GRADE) {
+void	Form::checkVaule(int grade) {
+	if (grade < MAX_GRADE) 
 		throw	Form::GradeTooHighException("Form grade out of max range");
-		return (false);
-	}
-	else if (grade > MIN_GRADE) {
+	else if (grade > MIN_GRADE) 
 		throw	Form::GradeTooLowException("Form grade out of min range");
-		return (false);
-	}
-	else
-		return (true);
 }
 
 Form::Form(const std::string name, int gradeToSign, int gradeToExec) : _name(name) {
 	std::cout << "Default Form constructor called" << std::endl;
 	try {
-		if (this->checkVaule(gradeToSign))
+			Form::checkVaule(gradeToSign);
 			_gradeToSign = gradeToSign;
-		else
-			_gradeToSign = 1;
 	}
 	catch(const std::out_of_range& e) {
+		_gradeToSign = 1;
 		std::cerr << "Sign " << e.what() << '\n';
 	}
 	try {
-		if (this->checkVaule(gradeToExec))
+			Form::checkVaule(gradeToExec);
 			_gradeToExec = gradeToExec;
-		else
-			_gradeToExec = 1;
 	}
 	catch (const std::out_of_range& e) {
+		_gradeToExec = 1;
 		std::cerr << "Execution " << e.what() << '\n';
 	}
 	_isSigned = false;
@@ -73,6 +65,8 @@ const std::string Form::getName() const { return _name;}
 void	Form::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() >= this->getGradeToSign())
 		throw	Form::GradeTooLowException("grade is too low to sign.");
+	else
+		std::cout << bureaucrat.getName() << " signed Form " << this->getName() << std::endl;
 	this->_isSigned = true;
 }
 
