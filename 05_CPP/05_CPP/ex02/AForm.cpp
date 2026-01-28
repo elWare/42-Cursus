@@ -20,10 +20,12 @@ void	AForm::checkVaule(int grade) {
 		throw	AForm::GradeTooLowException("AForm grade out of min range");
 }
 
-AForm::AForm() : _name ("AForm_Default"), _gradeToSign(50), _gradeToExec(50) {}
+AForm::AForm() : _name ("AForm_Default"), _gradeToSign(50), _gradeToExec(50) {
+	std::cout << "Default AForm constructor called: " << getName() <<std::endl;
+}
 
-AForm::AForm(const std::string name, int gradeToSign, int gradeToExec) : _name(name) {
-	std::cout << "Default AForm constructor called" << std::endl;
+AForm::AForm(std::string name, int gradeToSign, int gradeToExec) :_name(name) {
+	std::cout << "Parametric constructor called: " << name <<std::endl;
 	try {
 			AForm::checkVaule(gradeToSign);
 			_gradeToSign = gradeToSign;
@@ -61,18 +63,18 @@ void	AForm::operator=(const AForm &oth) {
 int		AForm::getGradeToExec() const { return _gradeToExec;}
 int		AForm::getGradeToSign() const { return _gradeToSign;}
 bool	AForm::getIsSigned() const { return _isSigned;}
-const std::string AForm::getName() const { return _name;}
+std::string AForm::getName() const { return _name;}
 
 void	AForm::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() >= this->getGradeToSign())
 		throw	AForm::GradeTooLowException("grade is too low to sign.");
 	else
-		std::cout << bureaucrat.getName() << " signed AForm " << this->getName() << std::endl;
+		std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
 	this->_isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &aform) {
-	os << "AForm " << aform.getName() << " with grade to sign " << aform.getGradeToSign() 
+	os << "Form " << aform.getName() << " with grade to sign " << aform.getGradeToSign() 
 	<< " and grade to execute " << aform.getGradeToExec() << " is ";
 	if (aform.getIsSigned())
 		os << "signed";

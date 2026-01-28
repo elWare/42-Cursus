@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/27 17:57:03 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/28 09:36:53 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void Bureaucrat::checkValue(int grade) {
 }
 
 Bureaucrat::Bureaucrat() : _name("Default_name"), _grade(MIN_GRADE) {
-	std::cout << "Default constructor call" << std::endl;
+	std::cout << "Default Bureaucrat constructor call: " << _name <<std::endl;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) , _grade(oth_buro._grade) {
-	std::cout << "Copy constructor call" << std::endl;
+	std::cout << "Copy Bureaucrat constructor call: " << getName() << std::endl;
 }
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
-	std::cout << "Named constructor call" << std::endl;
+	std::cout << "Named Bureaucrat constructor call: " << name <<std::endl;
 	try
 	{
 		checkValue(grade);
@@ -100,7 +100,7 @@ void	Bureaucrat::executeForm(AForm &aform) const {
 	try
 	{
 		aform.execute(*this);
-		
+		std::cout << aform.getName() << " executed by " << getName() <<std::endl;
 	}
 	catch(const std::exception& e)
 	{

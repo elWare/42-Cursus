@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:24:23 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/27 19:11:06 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/28 08:56:50 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <fstream>
-#define SCB_EXEC 137
-#define SCB_SIGN 145
+#define EXEC_SCF 137
+#define SIGN_SCF 145
 
 class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm{
 	private:
 		std::string	_target;
-		const	int	_signGrade = 145;
-		const	int	_execGrade = 137;
+		const	int	_signGrade;
+		const	int	_execGrade;
 		ShrubberyCreationForm();
 	public:
 		ShrubberyCreationForm(const std::string &target);

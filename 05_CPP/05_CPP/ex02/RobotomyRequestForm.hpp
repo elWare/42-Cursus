@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 08:38:57 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/28 08:50:25 by jumarque         ###   ########.fr       */
+/*   Created: 2026/01/28 08:33:05 by jumarque          #+#    #+#             */
+/*   Updated: 2026/01/28 08:58:08 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#define SIGN 25
-#define EXEC 5
+#define SIGN_RRF 72
+#define EXEC_RRF 45
 
 
 class Bureaucrat;
 
-class PresidentialPardonForm : public AForm{
+class RobotomyRequestForm : public AForm{
 	private:
 		std::string	_target;
 		const	int	_signGrade;
 		const	int	_execGrade;
-		PresidentialPardonForm();
+		RobotomyRequestForm();
 	public:
-		PresidentialPardonForm(const std::string &target);
-		PresidentialPardonForm(const PresidentialPardonForm &oth);
-		PresidentialPardonForm	operator=(const PresidentialPardonForm &oth);
-		~PresidentialPardonForm();
+		RobotomyRequestForm(const std::string &target);
+		RobotomyRequestForm(const RobotomyRequestForm &oth);
+		RobotomyRequestForm	operator=(const RobotomyRequestForm &oth);
+		~RobotomyRequestForm();
 		void	execute(Bureaucrat const & executor) const;
 		void	checkValue(int value, bool isSigned) const;
 		

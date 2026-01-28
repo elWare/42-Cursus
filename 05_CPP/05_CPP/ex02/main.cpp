@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 19:22:18 by sternero          #+#    #+#             */
-/*   Updated: 2026/01/27 18:36:27 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/28 08:55:20 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include <iostream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-/* #include "PresidentialPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
- */
 #include "ShrubberyCreationForm.hpp"
 
 using std::cerr; using std::cout; using std::endl;
@@ -36,8 +35,8 @@ int main() {
 	cout << "Creating forms: \n" << endl;
 
 	ShrubberyCreationForm JB007("Donald");		// ShrubberyCreationForm with random values to test
-	//PresidentialPardonForm C3R41("Donald");		// PresidentialPardonForm with random values to test
-	//RobotomyRequestForm MA042("Donald");			// RobotomyRequestForm with random values to test
+	PresidentialPardonForm C3R41("Donald");		// PresidentialPardonForm with random values to test
+	RobotomyRequestForm MA042("Donald");			// RobotomyRequestForm with random values to test
 
 	cout << endl;								// Newline for readability
 
@@ -49,15 +48,15 @@ int main() {
 
 	cout << endl;								// Newline for readability
 
-	//Donald.executeForm(C3R41);					// Donald executes the form
-	//C3R41.beSigned(Donald);						// Sam executes the form
-	//Donald.executeForm(C3R41);						// Joe executes the form
+	Donald.executeForm(C3R41);					// Donald executes the form
+	C3R41.beSigned(Donald);						// Sam executes the form
+	Donald.executeForm(C3R41);						// Joe executes the form
 
 	cout << endl;								// Newline for readability
 
-	//Donald.executeForm(MA042);					// Donald executes the form
-	//MA042.beSigned(Donald);						// Donald signs the form
-	//Donald.executeForm(MA042);					// Donald executes the form
+	Donald.executeForm(MA042);					// Donald executes the form
+	MA042.beSigned(Donald);						// Donald signs the form
+	Donald.executeForm(MA042);					// Donald executes the form
 
 	cout << endl;								// Newline for readability
 

@@ -28,14 +28,14 @@ private:
 public:
 	AForm();
 	AForm(const AForm &oth);
-	AForm(const std::string name, int gradeToSign, int gradeToExec);
+	AForm(std::string name, int gradeToSign, int gradeToExec);
 	void	operator=(const AForm &oth);
 	~AForm();
 	
 	void	checkVaule(int grade);
 	int		getGradeToSign() const;
 	int		getGradeToExec() const;
-	const std::string getName() const;
+	std::string getName() const;
 	void	beSigned(Bureaucrat &buro);
 	bool	getIsSigned() const;
 

@@ -6,14 +6,20 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:36:13 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/27 19:10:55 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/28 09:43:19 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(target, 145, 137), _target(target) {}
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &oth) : AForm(oth), _target(oth._target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("SCForm", SIGN_SCF, EXEC_SCF),
+						_target("SCForm"), _signGrade(SIGN_SCF), _execGrade(EXEC_SCF) {
+							std::cout << "Shrubbery form created by" << target << std::endl;
+						}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &oth) : AForm(oth),
+						_target(oth._target), _signGrade(SIGN_SCF), _execGrade(EXEC_SCF) {
+							std::cout << getName() << "Shrubbery form created." << std::endl;
+						}
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 ShrubberyCreationForm ShrubberyCreationForm::operator=(const ShrubberyCreationForm &oth) {
 	_target = oth._target;
@@ -34,10 +40,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	try
 	{
 		ShrubberyCreationForm::checkValue(executor.getGrade(), this->getIsSigned());
+		std::cout << getName() << " has been executate by: " << std::endl;
 		std::ofstream	outFile(_target + "_shrubbery");
 		generateChristmasTree(10, outFile);
 		outFile.close();
-		std::cout << executor.getName() << " executed " << this->getName() <<std::endl;
 	}
 	catch(const std::exception& e)
 	{
