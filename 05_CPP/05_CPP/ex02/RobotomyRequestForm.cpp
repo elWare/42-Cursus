@@ -37,6 +37,7 @@ void	RobotomyRequestForm::checkValue(int grade, bool isSigned) const {
 
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
+	std::cout << "Trying to exec "<< getName()<< std::endl;
 	try
 	{
 		RobotomyRequestForm::checkValue(executor.getGrade(), this->getIsSigned());

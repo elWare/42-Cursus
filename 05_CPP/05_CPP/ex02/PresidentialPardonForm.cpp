@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 08:40:20 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/28 09:44:09 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:06:56 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ PresidentialPardonForm PresidentialPardonForm::operator=(const PresidentialPardo
 
 void	PresidentialPardonForm::checkValue(int grade, bool isSigned) const {
 	if (grade > getExecGrade() || grade > getSignGrade())
-		throw ErrorValueExecute("Can't execute Presidential AForm, incorrect grades.");
+		throw ErrorValueExecute("Can't execute PPForm, incorrect grades.");
 	else if (!isSigned)
-		throw ErrorSigned("Form no signed");
+		throw ErrorSigned("Can't execute PPForm, PPForm no signed");
 }
 
 
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
+	std::cout << "Trying to exec "<< getName()<< std::endl;
 	try
 	{
 		PresidentialPardonForm::checkValue(executor.getGrade(), this->getIsSigned());

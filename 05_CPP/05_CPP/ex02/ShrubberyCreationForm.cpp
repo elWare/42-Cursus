@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:36:13 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/28 09:43:19 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:12:05 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("SCForm", SIGN_SCF, EXEC_SCF),
 						_target("SCForm"), _signGrade(SIGN_SCF), _execGrade(EXEC_SCF) {
-							std::cout << "Shrubbery form created by" << target << std::endl;
+							std::cout << "Shrubbery form created by " << target << std::endl;
 						}
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &oth) : AForm(oth),
 						_target(oth._target), _signGrade(SIGN_SCF), _execGrade(EXEC_SCF) {
@@ -37,10 +37,10 @@ void	ShrubberyCreationForm::checkValue(int grade, bool isSigned) const {
 
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	std::cout << "Trying to exec "<< getName()<< std::endl;
 	try
 	{
 		ShrubberyCreationForm::checkValue(executor.getGrade(), this->getIsSigned());
-		std::cout << getName() << " has been executate by: " << std::endl;
 		std::ofstream	outFile(_target + "_shrubbery");
 		generateChristmasTree(10, outFile);
 		outFile.close();
