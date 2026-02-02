@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 08:33:05 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/28 08:58:08 by jumarque         ###   ########.fr       */
+/*   Created: 2026/01/26 12:24:23 by jumarque          #+#    #+#             */
+/*   Updated: 2026/01/28 08:56:50 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <ctime>
-#include <cstdlib>
-#define SIGN_RRF 72
-#define EXEC_RRF 45
-
+#include <fstream>
+#define EXEC_SCF 137
+#define SIGN_SCF 145
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm{
+class ShrubberyCreationForm : public AForm{
 	private:
 		std::string	_target;
 		const	int	_signGrade;
 		const	int	_execGrade;
-		RobotomyRequestForm();
+		ShrubberyCreationForm();
 	public:
-		RobotomyRequestForm(const std::string &target);
-		RobotomyRequestForm(const RobotomyRequestForm &oth);
-		RobotomyRequestForm	operator=(const RobotomyRequestForm &oth);
-		~RobotomyRequestForm();
+		ShrubberyCreationForm(const std::string &target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &oth);
+		ShrubberyCreationForm	operator=(const ShrubberyCreationForm &oth);
+		~ShrubberyCreationForm();
 		void	execute(Bureaucrat const & executor) const;
 		void	checkValue(int value, bool isSigned) const;
+		void	generateChristmasTree(int height, std::ofstream &outputFile) const;
 		
 		int	getExecGrade() const;
 		int	getSignGrade() const;

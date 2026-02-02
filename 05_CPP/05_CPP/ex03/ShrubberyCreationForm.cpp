@@ -43,10 +43,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 		ShrubberyCreationForm::checkValue(executor.getGrade(), this->getIsSigned());
 		std::ofstream	outFile(_target + "_shrubbery",std::ios::out);
 		if (outFile) {
-            generateChristmasTree(10, outFile);
-        } else {
-            throw std::runtime_error("Failed to open output file");
-        }
+			generateChristmasTree(10, outFile);
+		} else {
+			throw std::runtime_error("Failed to open output file");
+		}
 		outFile.close();
 	}
 	catch(const std::exception& e)

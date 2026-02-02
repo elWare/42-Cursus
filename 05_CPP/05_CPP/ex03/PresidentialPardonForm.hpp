@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 08:33:05 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/28 08:58:08 by jumarque         ###   ########.fr       */
+/*   Created: 2026/01/28 08:38:57 by jumarque          #+#    #+#             */
+/*   Updated: 2026/01/28 08:50:25 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <ctime>
-#include <cstdlib>
-#define SIGN_RRF 72
-#define EXEC_RRF 45
+#define SIGN 25
+#define EXEC 5
 
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm{
+class PresidentialPardonForm : public AForm{
 	private:
 		std::string	_target;
 		const	int	_signGrade;
 		const	int	_execGrade;
-		RobotomyRequestForm();
+		PresidentialPardonForm();
 	public:
-		RobotomyRequestForm(const std::string &target);
-		RobotomyRequestForm(const RobotomyRequestForm &oth);
-		RobotomyRequestForm	operator=(const RobotomyRequestForm &oth);
-		~RobotomyRequestForm();
+		PresidentialPardonForm(const std::string &target);
+		PresidentialPardonForm(const PresidentialPardonForm &oth);
+		PresidentialPardonForm	operator=(const PresidentialPardonForm &oth);
+		~PresidentialPardonForm();
 		void	execute(Bureaucrat const & executor) const;
 		void	checkValue(int value, bool isSigned) const;
 		
