@@ -5,25 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/02 13:06:56 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 13:18:38 by jumarque         ###   ########.fr       */
+/*   Created: 2026/02/03 13:11:16 by jumarque          #+#    #+#             */
+/*   Updated: 2026/02/03 13:20:04 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Base.hpp"
+#include <cstdlib>
+#include <iostream>
 
-using std::cerr; using std::cout; using std::endl;
+using std::cout; using std::endl;
 
-int main(int argc, char **argv) {
-	if (argc != 2 || !argv[1][0]) {
-		cerr << RED << "Error" << RESET << ": Invalid arguments" << endl;
-		cerr << GREEN << "Usage" << RESET": ./convert [value]" << endl;
-		return 1;
-	}
+int	main() {
 
-	cout << BLUE << "\n* * * Scalar Converter * * *" << RESET << endl;
-	ScalarConverter::convert(argv[1]);
+	Base	*ptr;
 
-	cout << BLUE << "\n* * * * your results * * * *\n" << RESET << endl;
+	cout << "\n* * * Executing Test * * *\n" << endl;
+
+	ptr = generate();
+
+	cout << "\n";
+	identify(ptr);
+	identify(*ptr);
+
+	delete ptr;
+
+	cout << "\n* * *  Ending  Test  * * *\n" << endl;
+
 	return 0;
-}
+
+}	
