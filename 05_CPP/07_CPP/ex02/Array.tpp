@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 15:29:13 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 16:28:55 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/04 11:20:43 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ Array<T>& Array<T>::operator=(Array const &oth) {
 		for (uint32_t i = 0; i < oth.size(); i++)
 			this->_array[i] = oth._array[i];
 	}
-	std::cout << "Array - assignation operator called" << std::endl
-	retunr (*this);
+	std::cout << "Array - assignation operator called" << std::endl;
+	return (*this);
 }
 
 template <typename T>
 T& Array<T>::operator[](uint32_t i) {
 	if (i >= this->size())
 		throw Array<T>::OutOfLimits("Out of range size");
-	return (this->_array[i])
+	return (this->_array[i]);
 }
 
 template <typename T>
@@ -51,6 +51,6 @@ uint32_t	Array<T>::size() const {return (this->_size);}
 
 template <typename T>
 Array<T>::~Array() {
-	delete[] this->store;
+	delete[] this->_array;
 	std::cout << "Array - destructor called" << std::endl;
 }

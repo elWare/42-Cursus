@@ -1,4 +1,4 @@
-NAME 		= Array
+NAME 		= easyfind
 TITLE 		= "🔥 [CPP_07] [EX2] Array 💫"
 SRC 		= main.cpp
 OBJ 		= $(SRC:.cpp=.o)

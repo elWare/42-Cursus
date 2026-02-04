@@ -1,6 +1,7 @@
-NAME 		= Array
+NAME 		= Span
 TITLE 		= "🔥 [CPP_07] [EX2] Array 💫"
-SRC 		= main.cpp
+SRC 		= main.cpp \
+				Span.cpp
 OBJ 		= $(SRC:.cpp=.o)
 
 CXX 		= c++

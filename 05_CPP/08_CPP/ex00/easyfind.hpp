@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 15:03:54 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/04 11:59:45 by jumarque         ###   ########.fr       */
+/*   Created: 2026/02/04 11:54:10 by jumarque          #+#    #+#             */
+/*   Updated: 2026/02/04 12:21:26 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
-#include <string>
+#include <algorithm>
 #include <exception>
-#include <cstdlib>
-#include <stdint.h>
+#include <iostream>
+#include <limits>
+#include <string>
+#include <vector>
 
-template <typename T>
-class Array {
-	private:
-		T		*_array;
-		uint32_t	_size;
+class EasyFindException : public std::out_of_range {
 	public:
-		Array();
-		Array(uint32_t numb);
-		Array(Array const &oth);
-		Array&	operator=(Array const &oth);
-		T&	operator[](uint32_t n);
-		uint32_t	size() const;
-		~Array();
-
-		class OutOfLimits : public std::out_of_range {
-			public:
-				OutOfLimits(std::string message) : std::out_of_range(message) {}
-		};
+		EasyFindException(std::string message) : std::out_of_range(message) {}
 };
 
-#include "Array.tpp"
+#include "easyfind.tpp"
+
+template <typename T>
+bool	easyfind(T &container, int toFind);

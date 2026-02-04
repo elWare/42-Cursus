@@ -6,12 +6,11 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:05:36 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 16:30:10 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/04 11:59:07 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
-#include "Array.tpp"
 #define BLUE "\033[1;34m"
 #define RED "\033[1;31m"
 #define RESET "\033[0m"
@@ -24,8 +23,8 @@ int	main() {
 
 	// Creating two arrays of different sizes...
 
-	Array <int> a(3);
-	Array <int> b(5);
+	Array<int> a(3);
+	Array<int> b(5);
 
 	cout << BLUE << "\nShowing the values of the arrays... \n" << RESET << endl;
 	for (size_t i = 0; i < a.size(); i++) {
