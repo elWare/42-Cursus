@@ -1,5 +1,5 @@
 NAME 		= mutantStack
-TITLE 		= "🔥 [CPP_07] [EX2] Array 💫"
+TITLE 		= "🔥 [CPP_08] [EX02] mutantStack 💫"
 SRC 		= main.cpp
 OBJ 		= $(SRC:.cpp=.o)
 

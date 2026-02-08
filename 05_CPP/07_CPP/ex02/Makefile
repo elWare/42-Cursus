@@ -1,5 +1,5 @@
 NAME 		= Array
-TITLE 		= "🔥 [CPP_07] [EX2] Array 💫"
+TITLE 		= "🔥 [CPP_07] [EX02] Array 💫"
 SRC 		= main.cpp
 OBJ 		= $(SRC:.cpp=.o)
 

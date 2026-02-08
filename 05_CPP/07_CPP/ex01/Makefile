@@ -1,6 +1,6 @@
 NAME = iter
 
-TITLE = "🔥 [CPP_07] [EX1] Iter 💫"
+TITLE = "🔥 [CPP_07] [EX01] Iter 💫"
 
 SRC = main.cpp
 

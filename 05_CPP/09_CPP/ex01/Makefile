@@ -1,6 +1,7 @@
-NAME 		= easyfind
-TITLE 		= "🔥 [CPP_08] [EX00] easyfind 💫"
-SRC 		= main.cpp
+NAME 		= RPN
+TITLE 		= "🔥 [CPP_09] [EX01] Array 💫"
+SRC 		= main.cpp \
+				RPN.cpp
 OBJ 		= $(SRC:.cpp=.o)
 
 CXX 		= c++

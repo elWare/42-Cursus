@@ -1,6 +1,6 @@
 NAME = start
 
-TITLE = "🔥 [CPP_07] [EX0] Start with a few functions 💫"
+TITLE = "🔥 [CPP_07] [EX00] Wharever 💫"
 
 SRC = main.cpp
 

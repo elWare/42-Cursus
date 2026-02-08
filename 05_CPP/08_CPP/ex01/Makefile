@@ -1,5 +1,5 @@
 NAME 		= Span
-TITLE 		= "🔥 [CPP_07] [EX2] Array 💫"
+TITLE 		= "🔥 [CPP_08] [EX01] Span 💫"
 SRC 		= main.cpp \
 				Span.cpp
 OBJ 		= $(SRC:.cpp=.o)
