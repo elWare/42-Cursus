@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 11:05:31 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/06 17:44:21 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/08 10:23:05 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ bool BitcoinExchange::isDateFormatValid(const std::string &date) {
 	return (true);
 }
 bool	BitcoinExchange::isValidDate(const std::string &date) {
-	if (date.size() != 10 || date[4] != '-' || date[7 != '-']) {
-		std::cerr << RED DATE_ERR << "\"" << date << "\"" << RESET << std::endl;
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
+		std::cerr << "Aquí " <<RED DATE_ERR << "\"" << date << "\"" << RESET << std::endl;
 		return (false);
 	}
 
@@ -71,21 +71,21 @@ bool	BitcoinExchange::isValidDate(const std::string &date) {
 
 	for (size_t i = 0; i < yearStr.size(); i++) {
 		if (!isdigit(yearStr[i])){
-			std::cerr << RED DATE_ERR << "\"" << date << "\"" << RESET << std::endl;
+			std::cerr << RED YEAR_ERR << "\"" << date << "\"" << RESET << std::endl;
 			return false;
 		}
 	}
 
 	for (size_t i = 0; i < monthStr.size(); i++) {
 		if (!isdigit(monthStr[i])){
-			std::cerr << RED DATE_ERR << "\"" << date << "\"" << RESET << std::endl;
+			std::cerr << RED MONTH_ERR << "\"" << date << "\"" << RESET << std::endl;
 			return false;
 		}
 	}
 	
 	for (size_t i = 0; i < dayStr.size(); i++) {
 		if (!isdigit(dayStr[i])){
-			std::cerr << RED DATE_ERR << "\"" << date << "\"" << RESET << std::endl;
+			std::cerr << RED DAY_ERR << "\"" << date << "\"" << RESET << std::endl;
 			return false;
 		}
 	}
