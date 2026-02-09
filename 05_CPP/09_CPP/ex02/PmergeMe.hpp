@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 19:55:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/08 20:19:49 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:47:08 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,5 @@ class PmergeMe {
 				virtual const char *what() const throw();
 		};
 };
+
+unsigned int	ft_stou(const std::string &str);

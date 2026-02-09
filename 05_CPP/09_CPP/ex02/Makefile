@@ -1,7 +1,7 @@
-NAME 		= RPN
-TITLE 		= "🔥 [CPP_09] [EX01] RPN 💫"
+NAME 		= PmergeMe
+TITLE 		= "🔥 [CPP_09] [EX02] PmergeMe 💫"
 SRC 		= main.cpp \
-				RPN.cpp
+				PmergeMe.cpp
 OBJ 		= $(SRC:.cpp=.o)
 
 CXX 		= c++
