@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:36:13 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/28 15:12:05 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:32:51 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	try
 	{
 		ShrubberyCreationForm::checkValue(executor.getGrade(), this->getIsSigned());
-		std::ofstream	outFile(_target + "_shrubbery",std::ios::out);
+		std::ofstream	outFile((_target + "_shrubbery").c_str(),std::ios::out);
 		if (outFile) {
 			generateChristmasTree(10, outFile);
 		} else {

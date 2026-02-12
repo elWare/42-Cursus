@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:05:35 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 11:42:21 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:51:44 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,12 @@ void	Form::checkVaule(int grade) {
 }
 
 Form::Form(const std::string name, int gradeToSign, int gradeToExec) : _name(name) {
-	std::cout << "Default Form constructor called" << std::endl;
-	try {
-			Form::checkVaule(gradeToSign);
-			_gradeToSign = gradeToSign;
-	}
-	catch(const std::out_of_range& e) {
-		_gradeToSign = 1;
-		std::cerr << "Sign " << e.what() << '\n';
-	}
-	try {
-			Form::checkVaule(gradeToExec);
-			_gradeToExec = gradeToExec;
-	}
-	catch (const std::out_of_range& e) {
-		_gradeToExec = 1;
-		std::cerr << "Execution " << e.what() << '\n';
-	}
+	Form::checkVaule(gradeToSign);
+	_gradeToSign = gradeToSign;
+	Form::checkVaule(gradeToExec);
+	_gradeToExec = gradeToExec;
 	_isSigned = false;
+	std::cout << "Default Form constructor called" << std::endl;
 }
 
 Form::Form(const Form &oth) : _name (oth._name) {

@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 11:21:45 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:49:51 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,15 @@ bool Bureaucrat::checkValue(int grade) {
 Bureaucrat::Bureaucrat() : _name("Default_name"), _grade(MIN_GRADE) {
 	std::cout << "Default constructor called" << std::endl;
 };
-Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) , _grade(oth_buro._grade) {
+Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) {
+	checkValue(oth_buro._grade);
+	this->_grade = oth_buro._grade;
 	std::cout << "Copy constructor called" << std::endl;
 }
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
+	checkValue(grade);
+	_grade = grade;
 	std::cout << "Named constructor call" << std::endl;
-	try
-	{
-		if (checkValue(grade))
-			_grade = grade;
-		else
-			_grade = MIN_GRADE;
-	}
-	catch(const std::out_of_range& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Destructor call" << std::endl;
@@ -62,41 +55,19 @@ const std::string	Bureaucrat::getName() const {
 	return (_name);
 }
 int	Bureaucrat::getGrade() const {
-	return (_grade);
+	return (this->_grade);
 }
 
 void	Bureaucrat::incrementGrade() {
-	try
-	{
-		if (checkValue(_grade - 1))
-			_grade--;
-	}
-	catch(const std::out_of_range& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	checkValue(_grade - 1);
+	_grade--;
 }
 void	Bureaucrat::decrementGrade() {
-	try
-	{
-		if (checkValue(_grade + 1))
-			_grade++;
-			
-	}
-	catch(const std::out_of_range& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	checkValue(_grade + 1);
+	_grade++;
 }
 
 void	Bureaucrat::signForm(Form &form) {
-	try
-	{
-		form.beSigned(*this);
-		std::cout << Bureaucrat::getName() << " signed " << form.getName() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << Bureaucrat::getName() << " couldn't sig " << form.getName() << " because " << e.what() << std::endl;
-	}
+	form.beSigned(*this);
+	std::cout << Bureaucrat::getName() << " signed " << form.getName() << std::endl;
 }

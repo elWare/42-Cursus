@@ -25,23 +25,11 @@ AForm::AForm() : _name ("AForm_Default"), _gradeToSign(50), _gradeToExec(50) {
 }
 
 AForm::AForm(std::string name, int gradeToSign, int gradeToExec) :_name(name) {
+	AForm::checkVaule(gradeToSign);
+	_gradeToSign = gradeToSign;
+	AForm::checkVaule(gradeToExec);
+	_gradeToExec = gradeToExec;
 	std::cout << "Parametric constructor called: " << name <<std::endl;
-	try {
-			AForm::checkVaule(gradeToSign);
-			_gradeToSign = gradeToSign;
-	}
-	catch(const std::out_of_range& e) {
-		_gradeToSign = 1;
-		std::cerr << "Sign " << e.what() << '\n';
-	}
-	try {
-			AForm::checkVaule(gradeToExec);
-			_gradeToExec = gradeToExec;
-	}
-	catch (const std::out_of_range& e) {
-		_gradeToExec = 1;
-		std::cerr << "Execution " << e.what() << '\n';
-	}
 	_isSigned = false;
 }
 

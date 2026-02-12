@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:45:10 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 11:33:06 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:45:30 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int main() {
 	cout << blue <<"\nNow let's create a form that requires a grade 50 execution and" << endl;
 	cout << "a bureaucrat with grade 100.\n" << reset << endl; {
 		Form f("CF456", 50, 40);
-		Bureaucrat b("Jane Doe", 30);
+		Bureaucrat b("Jane Doe", 69);
 		try {
 			cout << f << endl;
 			cout << b << endl;

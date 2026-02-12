@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:41:35 by sternero          #+#    #+#             */
-/*   Updated: 2026/01/26 11:31:27 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:45:25 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,17 @@ int main() {
 	}
 
 	cout << "\n* * * * * * Grade low and high * * * * * *\n" << endl; {
-
-		Bureaucrat a("A", MIN_GRADE + 1);
-		Bureaucrat b("B", MAX_GRADE - 1);
+		try
+		{
+			Bureaucrat a("A", MIN_GRADE + 1);
+			Bureaucrat b("B", MAX_GRADE - 1);
 			cout << b;
+			cout << a;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 
 	}
 

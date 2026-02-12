@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:13:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/01/26 12:43:47 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 17:13:00 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,9 @@ Bureaucrat::Bureaucrat(const Bureaucrat &oth_buro) : _name(oth_buro._name) , _gr
 	std::cout << "Copy constructor call" << std::endl;
 }
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
+	checkValue(grade);
+	_grade = grade;
 	std::cout << "Named constructor call" << std::endl;
-	try
-	{
-		checkValue(grade);
-		_grade = grade;
-	}
-	catch(const std::out_of_range& e)
-	{
-		_grade = MIN_GRADE;
-		std::cerr << e.what() << '\n';
-	}
 }
 Bureaucrat::~Bureaucrat() {
 	std::cout << "Destructor call" << std::endl;
@@ -59,24 +51,10 @@ int	Bureaucrat::getGrade() const {
 }
 
 void	Bureaucrat::incrementGrade() {
-	try
-	{
 		checkValue(_grade - 1);
 			_grade--;
-	}
-	catch(const std::out_of_range& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }
 void	Bureaucrat::decrementGrade() {
-	try
-	{
 		checkValue(_grade + 1);
 			_grade++;
-	}
-	catch(const std::out_of_range& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }
