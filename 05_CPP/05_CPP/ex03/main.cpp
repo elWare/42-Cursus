@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumarque <jumarque@student.42Malaga.com    +#+  +:+       +#+        */
+/*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 13:21:44 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/01 13:21:51 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:04:12 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,26 @@ using std::cerr; using std::cout; using std::endl;
 
 int main() {
 
-	AForm *a; AForm *b; AForm *c;							// Pointers to AForm objects
+	AForm *a; AForm *b; AForm *c;
 
-	cout << endl;											// Newline for readability
+	cout << endl;
 
-	Intern Musk;											// Create an Intern object
-	cout << endl;											// Newline for readability
+	Intern Musk;
+	cout << endl;
 
-	a = Musk.makeForm("presidential pardon", "Donald");		// Create a PresidentialPardonForm object
-	cout << endl;											// Newline for readability
+	a = Musk.makeForm("presidential pardon", "Donald");
+	cout << endl;
 
-	b = Musk.makeForm("robotomy request", "Donald");		// Create a RobotomyRequestForm object
-	cout << endl;											// Newline for readability
+	b = Musk.makeForm("robotomy request", "Donald");
+	cout << endl;
 
-	c = Musk.makeForm("shrubbery creation", "Donald");		// Create a ShrubberyCreationForm object
-	cout << endl;											// Newline for readability
+	c = Musk.makeForm("shrubbery creation", "Donald");
+	cout << endl;
 	
-	Musk.makeForm("UP2U", "Donald");						// Create a PresidentialPardonForm object
-	cout << endl;											// Newline for readability
+	Musk.makeForm("UP2U", "Donald");
+	cout << endl;
 
-	delete a; delete b; delete c;							// Delete the AForm objects
+	delete a; delete b; delete c;
 
 	return 0;
 	
