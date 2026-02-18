@@ -1,16 +1,18 @@
 # Dockerfile
-FROM alpine:3.18
+FROM debian:Trixie
 
 # Actualizamos los paquetes e instalamos Nginx y OpenSSL.
 # OpenSSL es necesario para la configuración de TLS [1].
-RUN apk add --no-cache nginx openssl
-
-# Creamos el directorio para los certificados SSL dentro del contenedor.
-RUN mkdir -p /etc/nginx/ssl
+RUN apt update -y && apt upgrade -y && \
+    apt install -y nginx vim openssl && \
+    mkdir -p /etc/nginx/ssl
 
 # Copiamos nuestra configuración personalizada de Nginx al contenedor.
 # Este archivo definirá el uso de TLSv1.2 o TLSv1.3 [1].
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+RUN mkdir -p /var/run/nginx /var/www/html
+RUN chmod -R 755 /var/www/html && \
+    chown -R www-data:www-data /var/www/html
 
 # Exponemos el puerto 443, ya que Nginx debe ser el único punto de entrada HTTPS [1].
 EXPOSE 443

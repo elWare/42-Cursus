@@ -1,9 +1,9 @@
-# Dockerfile
-# Usamos la penúltima versión estable de Alpine como base.
-FROM alpine:3.18
+FROM debian:Trixie
 
-# Instalamos MariaDB y sus dependencias.
-RUN apk add --no-cache mariadb mariadb-client
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y mariadb-server && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copiamos un script de inicialización opcional (se ejecutará al inicio de la primera ejecución).
 # Este script puede ser útil para crear usuarios y bases de datos iniciales.
