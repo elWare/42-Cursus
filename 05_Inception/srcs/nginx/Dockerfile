@@ -1,11 +1,16 @@
 # Dockerfile
-FROM debian:Trixie
+FROM debian:trixie
 
 # Actualizamos los paquetes e instalamos Nginx y OpenSSL.
 # OpenSSL es necesario para la configuración de TLS [1].
 RUN apt update -y && apt upgrade -y && \
     apt install -y nginx vim openssl && \
     mkdir -p /etc/nginx/ssl
+
+RUN openssl req -x509 -nodes \
+    -out /etc/nginx/ssl/inception.crt \
+    -keyout /etc/nginx/ssl/inception.key \
+    -subj "/C=ES/ST=Andalucia/L=Malaga/O=42/OU=42/CN=spaceman.42.fr/UID=spaceman"
 
 # Copiamos nuestra configuración personalizada de Nginx al contenedor.
 # Este archivo definirá el uso de TLSv1.2 o TLSv1.3 [1].
