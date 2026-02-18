@@ -1,4 +1,4 @@
-FROM debian:Trixie
+FROM debian:trixie
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -15,4 +15,4 @@ EXPOSE 3306
 
 # Cuando se inicia el contenedor, este script será el punto de entrada.
 # Se asegura de que MariaDB se inicialice y se ejecute.
-ENTRYPOINT ["/usr/local/bin/setup_mariadb.sh"]
+# ENTRYPOINT ["/usr/local/bin/setup_mariadb.sh"]

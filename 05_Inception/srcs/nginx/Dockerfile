@@ -1,5 +1,5 @@
 # Dockerfile
-FROM debian:Trixie
+FROM debian:trixie
 
 # Actualizamos los paquetes e instalamos Nginx y OpenSSL.
 # OpenSSL es necesario para la configuración de TLS [1].
