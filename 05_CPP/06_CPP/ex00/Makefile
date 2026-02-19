@@ -3,7 +3,6 @@ NAME = convert
 TITLE = "🔥 [CPP_06] [EX00] Conversion of scalar types"
 
 SRC = main.cpp \
-		Utils.cpp \
 		ScalarConverter.cpp
 
 CXX = c++ 

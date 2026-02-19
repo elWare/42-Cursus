@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 11:24:35 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/02 13:14:20 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:37:57 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,3 @@ class ScalarConverter {
 		ScalarConverter	&operator=(const ScalarConverter &oth);
 		~ScalarConverter();
 };
-
-
-
-int ft_atoi(const std::string &str);
-float ft_atof(const std::string &str);
-double ft_atod(const std::string &str);
-bool isChar(const std::string &input);
-bool isInt(const std::string &input);
-bool isFloat(const std::string &input);
-bool isDouble(const std::string &input);
-bool isPseudo(const std::string &input);
-Type getType(const std::string &input);
-void printChar(char c);
-void printInt(int i);
-void printFloat(float f);
-void printDouble(double d);
-void pseudo(Type destType, const std::string &pseudoInput);
