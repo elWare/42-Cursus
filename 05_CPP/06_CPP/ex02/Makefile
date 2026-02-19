@@ -1,34 +1,33 @@
-NAME = identify
+NAME = base
 
-TITLE = "🔥 [CPP_06] [EX02] Identify real type 🕵️‍♂️"
+TITLE = "🔥 [CPP_06] [EX02] Base"
 
-SRC = Base.cpp \
-		Functions.cpp \
-		main.cpp
-
-OBJ = $(SRC:.cpp=.o)
+SRC = main.cpp \
+		ScalarConverter.cpp
 
 CXX = c++ 
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 %.o: %.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-all: $(NAME)
+all: $(NAME) 
 
-$(NAME): $(OBJ)
+$(NAME): $(SRC)
+	@echo "$(RED)Compiling $(TITLE) 🛠️ $(RESET)"
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(SRC)
+	@echo "$(GREEN)$(NAME) is ready ✅$(RESET)"
 
-	@echo "Compiling $(TITLE) 🛠️"
-	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
-	@echo "$(NAME) is ready ✅"
-	@echo ""
-	./$(NAME)
-	@echo ""
-	@echo "Cleaning $(TITLE) 🧹"
-	@rm -rf $(OBJ)
+clean: 
+	@echo "$(RED)Cleaning $(TITLE) 🧹 $(RESET)"
 	@rm -rf $(NAME)
-	@echo "$(NAME) is cleaned ✅"
+	@echo "$(GREEN)$(NAME) is cleaned ✅$(RESET)"
+
+fclean: clean
+	@echo "$(RED)Full cleaning $(TITLE) 🧹 $(RESET)"
+	@rm -rf $(NAME)
+	@echo "$(GREEN)$(NAME) is fully cleaned ✅$(RESET)"
 
 DEF_COLOR = \033[0m
 
@@ -45,3 +44,7 @@ BOLD    = \033[1m
 RED     = \033[31;1m
 
 RESET   = \033[0m
+
+re: fclean all
+
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 11:35:43 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/19 09:17:32 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:08:35 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ Type getType(const std::string &input) {
 static void printChar(char c) {
 	cout << "char: '" << c << "'" << endl;
 	cout << "int: " << static_cast<int>(c) << endl;
-	cout << "float: " << static_cast<float>(c) << ".00f" << endl;
-	cout << "double: " << static_cast<double>(c) << ".00" << endl;
+	cout << "float: " << static_cast<float>(c) << ".0f" << endl;
+	cout << "double: " << static_cast<double>(c) << ".0" << endl;
 }
 
 static void printInt(int i) {
@@ -187,8 +187,10 @@ static void printInt(int i) {
 	else
 		cout << "char: Non displayable" << endl;
 	cout << "int: " << i << endl;
-	cout << "float: " << static_cast<float>(i) << ".00f" << endl;
-	cout << "double: " << static_cast<double>(i) << ".00" << endl;
+	cout << std::fixed << std::setprecision(P_FLOAT);
+	cout << "float: " << static_cast<float>(i) << "f" << endl;
+	cout << std::fixed << std::setprecision(P_DOUBLE);
+	cout << "double: " << static_cast<double>(i) << endl;
 }
 
 static void printFloat(float f) {
@@ -203,7 +205,9 @@ static void printFloat(float f) {
 		else
 			cout << "char: Non displayable" << endl;
 		cout << "int: " << static_cast<int>(f) << endl;
-		cout << "float: " << std::fixed << std::setprecision(2) << f << "f" << endl;
+		cout << std::fixed << std::setprecision(P_FLOAT);
+		cout << "float: " << static_cast<float>(f) << "f" << endl;
+		cout << std::fixed << std::setprecision(P_DOUBLE);
 		cout << "double: " << static_cast<double>(f) << endl;
 	}
 }
@@ -220,8 +224,10 @@ static void printDouble(double d) {
 		else
 			cout << "char: Non displayable" << endl;
 		cout << "int: " << static_cast<int>(d) << endl;
-		cout << "float: " << static_cast<float>(d) << std::setprecision(1) << "f" << endl;
-		cout << "double: " << std::fixed << std::setprecision(1) << d << endl;
+		cout << std::fixed << std::setprecision(P_FLOAT);
+		cout << "float: " << static_cast<float>(d) << "f" << endl;
+		cout << std::fixed << std::setprecision(P_DOUBLE);
+		cout << "double: " << static_cast<double>(d) << endl;
 	}
 }
 

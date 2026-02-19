@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 11:56:05 by jumarque          #+#    #+#             */
-/*   Updated: 2025/10/04 11:59:39 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:51:41 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ class	Fixed
 		static const Fixed&	min(const Fixed &a, const Fixed &b);
 		static Fixed&	max(Fixed &a, Fixed &b);
 		static const Fixed&	max(const Fixed &a, const Fixed &b);
+
+		static const Fixed&	test(int a, int b);
 };
 
 std::ostream &operator<<(std::ostream &stream, const Fixed &nbr);
