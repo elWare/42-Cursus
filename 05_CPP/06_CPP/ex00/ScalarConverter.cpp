@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 11:35:43 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/20 20:24:10 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/20 20:45:53 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static long	ft_atoi(const std::string &str) {
 		|| int_num < std::numeric_limits<int>::min()
 		|| int_num > std::numeric_limits<int>::max()) {
 		std::cerr << RED << "Error" << RESET << ": int out of range." << std::endl;
+		exit(1);
 	}
 	return static_cast<long>(int_num);
 }
@@ -203,10 +204,11 @@ static void printFloat(float f) {
 	else
 		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 
-	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
+	if (f >= 2147483648.0f || f < -2147483648.0f) {
 		std::cout << "int: impossible" << std::endl;
-	else
+	} else {
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
+	}
 
 	if (f == static_cast<int>(f)) {
 		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
