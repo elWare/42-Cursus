@@ -3,7 +3,8 @@ NAME = base
 TITLE = "🔥 [CPP_06] [EX02] Base"
 
 SRC = main.cpp \
-		ScalarConverter.cpp
+		Base.cpp \
+		Functions.cpp
 
 CXX = c++ 
 

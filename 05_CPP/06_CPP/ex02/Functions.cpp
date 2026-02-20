@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:38:27 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 13:14:35 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:33:58 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,17 @@ void	identify(Base *p) {
 	casted = dynamic_cast<A*>(p);
 	if (casted) {
 		std::cout << "A" << std::endl;
+		return ;
 	}
 	casted = dynamic_cast<B*>(p);
 	if (casted) {
 		std::cout << "B" << std::endl;
+		return ;
 	}
 	casted = dynamic_cast<C*>(p);
 	if (casted) {
 		std::cout << "C" << std::endl;
+		return;
 	}
 	if (!casted) {
 		std::cout << "unknown" << std::endl;
@@ -58,7 +61,7 @@ void	identify(Base *p) {
 }
 
 void	identify(Base &p) {
-	std::cout << "Identify with Base: *";
+	std::cout << "Identify with Base: &";
 	try
 	{
 		A	&a = dynamic_cast<A&>(p);
