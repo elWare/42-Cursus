@@ -1,7 +1,3 @@
-Aquí tienes un archivo `README.md` profesional y bien estructurado para que lo subas a tu repositorio de GitHub. Está diseñado para ser la guía definitiva para cualquiera que rescate un MacBook Pro 7,1.
-
----
-
 ```markdown
 # Debian 13 (Trixie) en MacBook Pro 7,1 (Mid-2010) 🐧💻
 
@@ -131,8 +127,3 @@ Si usas **VS Code**, instala la extensión `42 Header` y configura tu login:
 ```
 
 ---
-
-### ¿Qué te parece este README?
-Si quieres que añada algo específico de tu campus (como algún script de limpieza de memoria que uséis), dímelo y lo incluimos. **¿Te gustaría que te explique cómo subir esto a GitHub paso a paso?**
-
-```
