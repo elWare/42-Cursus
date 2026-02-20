@@ -6,13 +6,13 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 11:35:43 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/19 18:08:35 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/20 20:24:10 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-static int ft_atoi(const std::string &str);
+static long ft_atoi(const std::string &str);
 static float ft_atof(const std::string &str);
 static double ft_atod(const std::string &str);
 static bool isChar(const std::string &input);
@@ -22,7 +22,7 @@ static bool isDouble(const std::string &input);
 static bool isPseudo(const std::string &input);
 static Type getType(const std::string &input);
 static void printChar(char c);
-static void printInt(int i);
+static void printInt(long i);
 static void printFloat(float f);
 static void printDouble(double d);
 static void pseudo(Type destType, const std::string &pseudoInput);
@@ -61,7 +61,7 @@ void	ScalarConverter::convert(const std::string &input) {
 
 using std::cout; using std::endl; using std::cerr;
 
-static int	ft_atoi(const std::string &str) {
+static long	ft_atoi(const std::string &str) {
 	char	*end;
 	errno = 0;
 	long int_num;
@@ -70,10 +70,9 @@ static int	ft_atoi(const std::string &str) {
 	if (*end != '\0' || errno == ERANGE
 		|| int_num < std::numeric_limits<int>::min()
 		|| int_num > std::numeric_limits<int>::max()) {
-		std::cerr << RED << "Error" << RESET << ":out of range." << std::endl;
-		exit(1);
+		std::cerr << RED << "Error" << RESET << ": int out of range." << std::endl;
 	}
-	return static_cast<int>(int_num);
+	return static_cast<long>(int_num);
 }
 
 static float	ft_atof(const std::string &str) {
@@ -180,13 +179,16 @@ static void printChar(char c) {
 	cout << "double: " << static_cast<double>(c) << ".0" << endl;
 }
 
-static void printInt(int i) {
+static void printInt(long i) {
 	if (i >= std::numeric_limits<char>::min() && i <= std::numeric_limits<char>::max()
 	&& isprint(static_cast<unsigned char>(i)))
 		cout << "char: '" << static_cast<char>(i) << "'" << endl;
 	else
 		cout << "char: Non displayable" << endl;
-	cout << "int: " << i << endl;
+	if (i < std::numeric_limits<int>::min() || i > std::numeric_limits<int>::max())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(i) << std::endl;
 	cout << std::fixed << std::setprecision(P_FLOAT);
 	cout << "float: " << static_cast<float>(i) << "f" << endl;
 	cout << std::fixed << std::setprecision(P_DOUBLE);
@@ -194,40 +196,51 @@ static void printInt(int i) {
 }
 
 static void printFloat(float f) {
-	if (f <= std::numeric_limits<char>::min()
-	|| f >= std::numeric_limits<char>::max()) {
-		cerr << RED << "Error" << RESET << ": out of int range !!!" << endl;
-		exit(1);
-	}
-	else {
-		if (isprint(f))
-			cout << "char: '" << static_cast<char>(f) << "'" << endl;
-		else
-			cout << "char: Non displayable" << endl;
-		cout << "int: " << static_cast<int>(f) << endl;
-		cout << std::fixed << std::setprecision(P_FLOAT);
-		cout << "float: " << static_cast<float>(f) << "f" << endl;
-		cout << std::fixed << std::setprecision(P_DOUBLE);
-		cout << "double: " << static_cast<double>(f) << endl;
+	if (f < std::numeric_limits<char>::min() || f > std::numeric_limits<char>::max())
+		std::cout << "char: impossible" << std::endl;
+	else if (!isprint(static_cast<unsigned char>(f)))
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
+
+	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+
+	if (f == static_cast<int>(f)) {
+		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
+	} else {
+		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(f) << std::endl;
 	}
 }
 
+
 static void printDouble(double d) {
-	if (d <= std::numeric_limits<char>::min() 
-	|| d >= std::numeric_limits<char>::max()) {
-		cerr << RED << "Error" << RESET << ": out of range !!!" << endl;
-		exit(1);
+	if (d < std::numeric_limits<char>::min() || d > std::numeric_limits<char>::max()) {
+		std::cout << "char: impossible" << std::endl;
+	} else if (!isprint(static_cast<unsigned char>(d))) {
+		std::cout << "char: Non displayable" << std::endl;
+	} else {
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 	}
-	else {
-		if (isprint(d))
-			cout << "char: '" << static_cast<char>(d) << "'" << endl;
-		else
-			cout << "char: Non displayable" << endl;
-		cout << "int: " << static_cast<int>(d) << endl;
-		cout << std::fixed << std::setprecision(P_FLOAT);
-		cout << "float: " << static_cast<float>(d) << "f" << endl;
-		cout << std::fixed << std::setprecision(P_DOUBLE);
-		cout << "double: " << static_cast<double>(d) << endl;
+
+	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max()) {
+		std::cout << "int: impossible" << std::endl;
+	} else {
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+	}
+
+	if (d == static_cast<long>(d)) {
+		std::cout << std::fixed << std::setprecision(P_FLOAT);
+		std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+		std::cout << std::fixed << std::setprecision(P_DOUBLE);
+		std::cout << "double: " << d << std::endl;
+	} else {
+		std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;
 	}
 }
 

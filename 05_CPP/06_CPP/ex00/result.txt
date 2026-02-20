@@ -1,0 +1,262 @@
+[1;33mCompilando proyecto...[0m
+
+[0;32m--- SECCIÓN: CHAR ---[0m
+[0;36mPrueba: ./convert "a"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: 'a'
+int: 97
+float: 97.0f
+double: 97.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "Z"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: 'Z'
+int: 90
+float: 90.0f
+double: 90.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "*"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: '*'
+int: 42
+float: 42.0f
+double: 42.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+
+[0;32m--- SECCIÓN: INT ---[0m
+[0;36mPrueba: ./convert "0"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: 0
+float: 0.0f
+double: 0.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "42"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: '*'
+int: 42
+float: 42.0f
+double: 42.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "-42"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: -42
+float: -42.0f
+double: -42.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "2147483647"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: 2147483647
+float: 2147483648.0f
+double: 2147483647.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "-2147483648"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: -2147483648
+float: -2147483648.0f
+double: -2147483648.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+
+[0;32m--- SECCIÓN: FLOAT ---[0m
+[0;36mPrueba: ./convert "0.0f"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: 0
+float: 0.0f
+double: 0.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "42.42f"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: '*'
+int: 42
+float: 42.42f
+double: 42.42
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "-4.2f"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: -4
+float: -4.2f
+double: -4.2
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "nanf"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: impossible
+int: impossible
+float: nanf
+double: nan
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "+inff"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: impossible
+int: impossible
+float: +inff
+double: +inf
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "-inff"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: impossible
+int: impossible
+float: -inff
+double: -inf
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+
+[0;32m--- SECCIÓN: DOUBLE ---[0m
+[0;36mPrueba: ./convert "0.0"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: 0
+float: 0.0f
+double: 0.0
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "42.42"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: '*'
+int: 42
+float: 42.42f
+double: 42.42
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "3.14159"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: Non displayable
+int: 3
+float: 3.14159f
+double: 3.14159
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "nan"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: impossible
+int: impossible
+float: nanf
+double: nan
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "+inf"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: impossible
+int: impossible
+float: +inff
+double: +inf
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "-inf"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+char: impossible
+int: impossible
+float: -inff
+double: -inf
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+
+[0;32m--- SECCIÓN: CASOS LÍMITE Y ERRORES ---[0m
+[0;36mPrueba: ./convert "2147483648"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "hola"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+[1;31mError[0m: invalid input
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert ""[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "42.42.42f"[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+[1;31mError[0m: invalid input
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[0;36mPrueba: ./convert "   "[0m
+[1;34m
+* * * Scalar Converter * * *[0m
+[1;31mError[0m: invalid input
+[1;34m
+* * * * your results * * * *
+[0m
+-----------------------------------[0m
+[1;33mTester finalizado.[0m
