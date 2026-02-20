@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 10:53:05 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 13:18:42 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:11:49 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main() {
 
 	Data	*ptr;
 	Data	*ptrNew = NULL;
-
+	
 	ptr = new Data;
 	ptr->str = "Up2u 🤗";
 
@@ -29,9 +29,9 @@ int	main() {
 	cout << "\n";
 
 	cout << "     Original ptr : " << RED << ptr << RESET <<endl;
-	uintptr_t converted = serialize(ptr);
+	uintptr_t converted = Serialization::serialize(ptr);
 	cout << "       Serielized : " << converted << endl;
-	ptrNew = deserialize(converted);
+	ptrNew = Serialization::deserialize(converted);
 	cout << "     Deserialized : " << RED << ptrNew << RESET << endl;
 	cout << "\n";
 
