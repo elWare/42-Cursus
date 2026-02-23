@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:23:41 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 14:43:18 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:43:23 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	iter(const T *array, size_t size, void (*f)(const T&))
 }
 
 template <typename T>
-void	addOne(T &x) {x++;}
+void	addItself(T &x) {x = x + x;}
 
 template <typename T>
 void	print(T &x) {std::cout << x << std::endl;}

@@ -6,26 +6,27 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:44:58 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/03 14:48:31 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:44:53 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
+#include <iostream>
 #define GREEN "\033[0;32m"
 #define RESET "\033[0m"
-#define arraySize 3
+#define ARRAYSIZE 3
 
 int	main() {
 
-	int arrayInt[] = { 1, 10, -100 };
+	std::string array[] = { "Hola ", "Que ", "Tal " };
 
 	std::cout << "\n";
-	std::cout << GREEN << "arrayInt before iter:" << RESET << std::endl;
-	::iter(arrayInt, arraySize, &::print<int>);
-	::iter(arrayInt, arraySize, &::addOne<int>);
+	std::cout << GREEN << "Array before iter:" << RESET << std::endl;
+	::iter(array, ARRAYSIZE, &::print<std::string>);
+	::iter(array, ARRAYSIZE, &::addItself<std::string>);
 	std::cout << "\n";
-	std::cout << GREEN << "arrayInt after iter:"<< RESET << std::endl;
-	::iter(arrayInt, arraySize, &::print<int>);
+	std::cout << GREEN << "Array after iter:"<< RESET << std::endl;
+	::iter(array, ARRAYSIZE, &::print<std::string>);
 
 	return 0;
 }

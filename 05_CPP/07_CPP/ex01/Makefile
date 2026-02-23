@@ -2,44 +2,50 @@ NAME = iter
 
 TITLE = "🔥 [CPP_07] [EX01] Iter 💫"
 
-SRC = main.cpp
+SRC 		= main.cpp
+OBJ 		= $(SRC:.cpp=.o)
 
-OBJ = $(SRC:.cpp=.o)
+CXX 		= c++
+CXXFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g
 
-CXX = c++ 
+VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --quiet
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
-
-%.o: %.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+DEF_COLOR 	= \033[0m
+BROWN   	= \033[33;1m
+MAGENTA 	= \033[35;1m
+YELLOW  	= \033[33;1m
+GREEN   	= \033[32;1m
+RED     	= \033[31;1m
+CYAN    	= \033[36;1m
+BOLD    	= \033[1m
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-
-	@echo "Compiling $(TITLE) 🛠️"
+	@echo "$(GREEN)Compiling $(TITLE)...$(DEF_COLOR) 🛠️"
 	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
-	@echo "$(NAME) is ready ✅"
-	@echo ""
-	./$(NAME)
-	@echo ""
-	@echo "Cleaning $(TITLE) 🧹"
-	@rm -rf $(OBJ)
-	@rm -rf $(NAME)
-	@echo "$(NAME) is cleaned ✅"
+	@echo "$(GREEN)$(NAME) is ready!$(DEF_COLOR) ✅"
 
-DEF_COLOR = \033[0m
+%.o: %.cpp
+	@echo "$(YELLOW)Generating object file $@...$(DEF_COLOR)"
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
-BROWN   = \033[33;1m
-MAGENTA = \033[35;1m
-YELLOW  = \033[33;1m
-GREEN   = \033[32;1m
-DARK_GREEN = \033[32;1m
-WHITE   = \033[37;1m
-GRAY    = \033[0;90m
-BLUE    = \033[34;1m
-CYAN    = \033[37;1m
-BOLD    = \033[1m
-RED     = \033[31;1m
+clean:
+	@echo "$(MAGENTA)Cleaning object files...$(DEF_COLOR) 🧹"
+	@rm -f $(OBJ)
 
-RESET   = \033[0m
+fclean: clean
+	@echo "$(RED)Cleaning executable $(NAME)...$(DEF_COLOR) 🧹"
+	@rm -f $(NAME)
+
+re: fclean all
+
+valgrind: all
+	@echo "$(CYAN)Analyzing $(NAME) with Valgrind...$(DEF_COLOR) 🕵️‍♀️"
+	@valgrind $(VALGRIND_FLAGS) ./$(NAME)
+
+run: all
+	@echo "$(BROWN)Running $(NAME)...$(DEF_COLOR) ▶️"
+	@./$(NAME)
+
+.PHONY: all clean fclean re run valgrind

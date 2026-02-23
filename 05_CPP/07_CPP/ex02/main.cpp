@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:05:36 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/04 11:59:07 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:47:22 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	main() {
 
 	cout << BLUE << "\nCreating two arrays of different sizes... \n" << RESET << endl;
 
-	// Creating two arrays of different sizes...
-
 	Array<int> a(3);
 	Array<int> b(5);
 
@@ -34,7 +32,6 @@ int	main() {
 		cout << "b[" << i << "] = " << b[i] << endl;
 	}
 	
-	// Assigning values to the arrays...
 
 	a[0] = 1;
 	a[1] = 1;
