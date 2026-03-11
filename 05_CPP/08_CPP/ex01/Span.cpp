@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 16:46:59 by jumarque          #+#    #+#             */
-/*   Updated: 2026/03/03 18:43:52 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/11 19:49:17 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterat
 }
 
 void	Span::addRamNumber(uint32_t amount){
-	if (amount > this->_maxSize)
+	if ((this->_numbers.size() + amount) > this->_maxSize)
 		throw Span::MaxSizeException();
 	srand(time(NULL));
 	for (uint32_t i = 0; i < amount; i++)

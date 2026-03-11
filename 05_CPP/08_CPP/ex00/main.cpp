@@ -15,14 +15,14 @@ int	main() {
 
 	cout << BLUE << "\nVector: { ";
 
-	for (int i = ini; i < end; i++) {
+	for (int i = ini; i <= end; i++) {
 		vec.push_back(i);
-		cout << static_cast<char>(i) << (i <= end ? ", " : " }");
+		cout << i << (i < end ? ", " : " }");
 	}
 
 	cout << RESET << endl;
 
-	char j;
+	int j;
 
 	cout << "\nSelect number to find in vector 🕵️‍♂️ : ";
 	while (!(std::cin >> j)) {
@@ -30,7 +30,7 @@ int	main() {
 			cout << "\n🔒 EOF signal (Ctrl+D) detected.\n";
 			return 1;
 		}
-		std::cin.clear();				// Clear the error flag
+		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	//
 		cout << RED << "~Invalid input 🤬 " << RESET << "try to do better : ";
 	}

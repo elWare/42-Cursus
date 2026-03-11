@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 11:54:10 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/04 12:21:26 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/11 19:37:44 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <limits>
 #include <string>
 #include <vector>
+
 
 class EasyFindException : public std::out_of_range {
 	public:

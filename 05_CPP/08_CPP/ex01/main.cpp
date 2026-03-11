@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 17:31:52 by jumarque          #+#    #+#             */
-/*   Updated: 2026/03/03 18:58:28 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/11 19:54:40 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ return 0;
 }
 
 /* int	main() {
-	Span sp = Span(10000);
+	Span sp = Span(20000);
 
 	std::vector<int> numbers;
-	for (int i = 250; i < 1000; i++)
+	for (int i = 1; i < 1000; i++)
 		numbers.push_back(i);
 	try {
-			sp.addRamNumber(500);
+			sp.addRamNumber(5000);
 			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 			std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 	} catch (std::exception &e) {
