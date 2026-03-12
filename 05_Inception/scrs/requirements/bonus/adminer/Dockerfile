@@ -14,17 +14,18 @@ RUN apt-get update && apt-get install -y \
     php8.2-redis \
     mariadb-client \
     wget \
-    curl \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-#RUN the adminer part, create html directory, move the adminer directory and add user
-RUN mkdir -p /var/www/html
-RUN wget "https://www.adminer.org/latest.php" -O /var/www/html/adminer.php
+    curl
 
-#RUN useradd -r -g www-data www-data
+#RUN the adminer part, create html directory, move the adminer directory and add user
+WORKDIR /var/www/html/
+RUN mkdir -p adminer
+RUN wget "https://www.adminer.org/latest.php" -O /var/www/html/adminer/index.php
+RUN echo "Ya he descargado adminer"
 
 COPY /conf/www.conf /etc/php8.2/php-fpm.d/www.conf
 
-EXPOSE 9000
+
+EXPOSE 8080
 STOPSIGNAL SIGQUIT
 
 CMD ["php-fpm8.2", "--nodaemonize"]

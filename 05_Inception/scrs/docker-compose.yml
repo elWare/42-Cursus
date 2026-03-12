@@ -3,9 +3,8 @@ services:
     container_name: nginx
     build: ./requirements/nginx
     depends_on:
-#      - adminer
+      - adminer
       - redis
- #     - hugo
     ports:
       - 443:443
     volumes:
@@ -69,9 +68,8 @@ services:
     networks:
       - network
     restart: always
-    environment:
-      FTP_USR: ${FTP_USR}
-      FTP_PWD: ${FTP_PWD}
+    env_file:
+      - .env
 
   adminer:
     build: ./requirements/bonus/adminer
@@ -79,23 +77,27 @@ services:
     depends_on:
       - mariadb
     expose:
-     - "9000"
+     - "8080"
+    volumes:
+      - "/home/${USER}/Inception/data/wordpress:/var/www/html"
     networks:
       - network
+    env_file:
+      - .env
 
-  hugo:
-    container_name: hugo
-    build: ./requirements/bonus/hugo
-    restart: always
+  ollama:
+    build: requirements/bonus/ollama
+    container_name: ollama-ai
+    ports:
+      - "11434:11434"
+    volumes:
+      - /home/${USER}/Inception/data/ollama:/root/.ollama
+      - /home/${USER}/Inception/data/models:/models
+    restart: unless-stopped
     networks:
       - network
-
-  static_page:
-    container_name: static_page
-    build: ./requirements/bonus/static_page
-    restart: always
-    networks:
-      - network
+    env_file:
+      - .env
 
 networks:
   network:
