@@ -20,5 +20,6 @@ clean:
 	fi
 	@sudo rm -rf data/mysql/*
 	@sudo rm -rf data/wordpress/*
+	@sudo rm -rf data/ollama/*
 
 .PHONY: all re down clean

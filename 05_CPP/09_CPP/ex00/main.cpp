@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 17:26:45 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/06 17:26:49 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/16 12:58:39 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int main(int argc, char *argv[]) {
 		}
 
 		std::string date = line.substr(0, limit - 1);		// get the date from the line
-		if (!btc.isDateFormatValid(date)					// if the date format is not valid
+		if (!btc.isDateFormatValid(date)
+			|| !btc.isValidDate(date)					// if the date format is not valid
 			|| !btc.isDataInRange(date))					// or the date is not in range
 			continue;										// continue to the next iteration
 

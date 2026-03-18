@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 19:55:33 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/09 12:47:08 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:35:44 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ class PmergeMe {
 		PmergeMe &operator=(const PmergeMe &oth);
 		~PmergeMe();
 
-		void sortList(int argc, char *argv[]);
-		void sortVector(int argc, char *argv[]);
+		static void	sortList(std::list<unsigned int> &res);
+		static void	sortVector(std::vector<unsigned int>& res);
+		static void	duplicateValue(std::vector<unsigned int>& v);
 	
 		class InvalidInput : public std::exception {
 			public:

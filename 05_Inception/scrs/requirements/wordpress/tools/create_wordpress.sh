@@ -2,7 +2,7 @@
 
 while ! mariadb-admin ping -h"mariadb" --silent; do
     echo "Esperando a MariaDB..."
-    sleep 2
+    sleep 10
 done
 
 # Ir al directorio de trabajo
@@ -52,10 +52,15 @@ else
     wp config set WP_REDIS_HOST redis --allow-root
     wp config set WP_REDIS_PORT 6379 --raw --allow-root
     wp redis enable --allow-root
+	wp plugin install alpaca-bot --activate --allow-root
+	wp plugin install ai-engine --activate --allow-root
+	wp plugin list --allow-root
 fi
 
 # ESTO SOLUCIONA TU ERROR: Actualiza la base de datos si hay discrepancia de versión
 wp core update-db --allow-root
 wp theme activate twentytwentyfour --allow-root
+wp config set FS_METHOD direct --allow-root
+# ... (al final de tu script)
 echo "WordPress listo y escuchando..."
-exec "$@"
+exec php-fpm8.2 -F

@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 11:05:31 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/08 10:23:05 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/16 12:57:32 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ BitcoinExchange::BitcoinExchange() {
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &oth) { *this = oth;}
+
 BitcoinExchange BitcoinExchange::operator=(const BitcoinExchange &oth) {
 	this->_bitcoinPrice = oth._bitcoinPrice;
 	return *this;
@@ -38,7 +39,7 @@ float	BitcoinExchange::getBitcoinPrice(const std::string str){
 		std::cerr << RED "Invalid date: " << str << RESET << std::endl;
 		return -1.0f;
 	}
-	if (this->_bitcoinPrice.count(str) > 0)
+	if (this->_bitcoinPrice.count(str))
 		return (this->_bitcoinPrice.at(str));
 	std::map<std::string, float>::iterator it = this->_bitcoinPrice.lower_bound(str);
 	if (it == this->_bitcoinPrice.begin() && str < it->first)

@@ -29,7 +29,7 @@ define( 'DB_USER', 'jumarque' );
 define( 'DB_PASSWORD', 'new1234' );
 
 /** Database hostname */
-define( 'DB_HOST', '10.0.0.43' );
+define( 'DB_HOST', 'mariadb' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );

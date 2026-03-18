@@ -26,17 +26,16 @@ If you have questions: please contact me, I will be glad to give you an answer !
 
 # SUMMARY
 
-### 1. [DEFINITIONS](https://github.com/vbachele/Inception/blob/main/README.md#definitions)
-### 2. [DOCKER](https://github.com/vbachele/Inception/blob/main/README.md#Docker)
-### 3. [NGINX](https://github.com/vbachele/Inception/blob/main/README.md#NGINX)
-### 4. [WORDPRESS](https://github.com/vbachele/Inception/blob/main/README.md#WORDPRESS)
-### 4. [MARIADB](https://github.com/vbachele/Inception/blob/main/README.md#MARIADB)
-### 5. [BONUS](https://github.com/vbachele/Inception/blob/main/README.md#BONUS)
-- [REDIS](https://github.com/vbachele/Inception/blob/main/README.md#REDIS)
-- [FTP-server](https://github.com/vbachele/Inception/blob/main/README.md#FTP-SERVER)
-- [Adminer](https://github.com/vbachele/Inception/blob/main/README.md#ADMINER)
-- [Service of my choice (hugo)](https://github.com/vbachele/Inception/blob/main/README.md#Service-of-my-choice)
-- [Static web page](https://github.com/vbachele/Inception/blob/main/README.md#Static-web-page)
+### 1. [DEFINITIONS]
+### 2. [DOCKER]
+### 3. [NGINX]
+### 4. [WORDPRESS]
+### 4. [MARIADB]
+### 5. [BONUS]
+- [REDIS]
+- [FTP-server]
+- [Adminer]
+- [Service of my choice (Ollama)]
 
 # Definitions
 ## What is a docker ?
@@ -52,7 +51,7 @@ Compose is a tool for defining and running multi-container Docker applications. 
 Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
 
 ## How to install docker on MACOS
-For this project, I am on my personal mac so I don't need to use the virtual machine to use a sudo command.
+For this project, I am on my personal computer so I don't need to use the virtual machine to use a sudo command.
 I had to install docker. First, you need:
 - I went directly to the docker website and I downloaded docker [Link to the website](https://docs.docker.com/desktop/install/mac-install/)
 - I installed docker on the machine
@@ -175,21 +174,21 @@ PHP-FPM (for fast-cgi Process Manager) runs as an isolated service when you use 
 	and the Nginx server handles HTTP requests only, while PHP-FPM interprets the PHP code. Taking advantage of two separate services is vital to become more efficient.
 	It features with Wordpress
 
-# Docker-compose
-- [tutorial open classroom dockercompose](https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker/6211624-decouvrez-et-installez-docker-compose)
+# Docker compose
+   Docker compose is a tool for defining and runnint mult-contaner Docker applications using a sigle configuration file(docker-compose-yml).
+   It allows yout to easily manage multiple related containers (like a web server and database) by starting, stopping o rebuilding the enterie apllication stack with a single command.
 
-## Docker-Compose commands
+## Docker compose commands
 ```c
-- docker-compose up -d --build, //Create and build all the containers and they still run in the background
-- docker-compose ps, //Check the status for all the containers
-- docker-compose logs -f --tail 5, //see the first 5 lines of the logs of your containers
-- docker-compose stop , //stop a stack of your docker compose
-- Docker-compose down, //destroy all your ressources
-- docker-compose config, //check the syntax of you docker-compose file
+- docker compose up -d --build, //Create and build all the containers and they still run in the background
+- docker compose ps, //Check the status for all the containers
+- docker compose logs -f --tail 5, //see the first 5 lines of the logs of your containers
+- docker compose stop , //stop a stack of your docker compose
+- docker compose down, //destroy all your ressources
+- docker compose config, //check the syntax of you docker-compose file
 ```
 
 ## Inside the docker-compose file
-All the information about what every line means are in this [tutorial](https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker/6211677-creez-un-fichier-docker-compose-pour-orchestrer-vos-conteneurs)
 
 # WORDPRESS 
 ## Useful links
@@ -202,7 +201,7 @@ All the information about what every line means are in this [tutorial](https://o
 ## What are the steps to create your Wordpress
 1. **Create you dockerfile image**
 	- Download php-fpm
-	- Copy the www.conf file in php/7.3/fpm/pool.d/
+	- Copy the www.conf file in php/8.4/fpm/pool.d/
 	- Create the php directory to enable php-fpm to run
 	- Copy the script and launch it
 	- Go to the html directory
@@ -326,7 +325,7 @@ redis-server --protected-mode no // To set up redis when you launch your image
 - Launch the command 'redis-cli -h localhost' on your redis image, your should connect to your localhost. Then do ping and the answer should be PONG. Great your redis is installed.
 
 2. **Check if the plugin is installed on wordpress**
-	- Go to your wp-admin panel on wordpress : for me it is https://vbachele.42.fr
+	- Go to your wp-admin panel on wordpress : for me it is https://jumarque.42.fr/wp-admin
 	- click on plugins on the left tab
 	- If you see "Redis Object Cache", Congrats !, click on settings and you will see Status "Connected" in green
 
@@ -362,9 +361,8 @@ An FTP Server, in the simplest of definitions, is a software application that en
 *In this .conf you will have to configure your file to allow the localhost*
 
 ### How you know it works?
-I did the test on my macOS (should work everywhere), you have to download filezilla for exemple it is a ftp client which will communicate with our vsftpd server. Once installed as the image shows below, you should see the directory you put in your .conf file with the line *local_root=/var/www/html*. If you add a file in the /var/www/html directory from filezilla, you should be able to see it in you container nginx, wordpress or ftp-server.
+I did the test on my linux Debian (should work everywhere), you have to download filezilla for exemple it is a ftp client which will communicate with our vsftpd server. Once installed as the image shows below, you should see the directory you put in your .conf file with the line *local_root=/var/www/html*. If you add a file in the /var/www/html directory from filezilla, you should be able to see it in you container nginx, wordpress or ftp-server.
 
-![filezilla client](./images/ftp_server_filezilla.png)
 
 ## ADMINER
 
@@ -391,57 +389,63 @@ Replace phpMyAdmin with Adminer and you will get a tidier user interface, better
 	- Create as usual a docker image adminer in your docker-compose
 
 ### How to know adminer is working?  
-- You have to put : https://"your_website_name"/adminer *in my case https://vbachele.42.fr/adminer*
+- You have to put : https://"your_website_name"/adminer *in my case https://jumarque.42.fr/adminer*
 - You should be redirect on the adminer connexion page
 
-## Service of my choice 
+## Service of my choice OLLAMA
 ### Useful links
-- [What is hugo](https://gohugo.io/about/what-is-hugo/)  
-- [How to set up hugo](https://gohugo.io/getting-started/quick-start/)  
-- [Configure hugo (more explanations about .toml file)](https://gohugo.io/getting-started/configuration/#configure-build)  
-### Definition
-Hugo is a fast and modern static site generator written in Go, and designed to make website creation fun again.
 
-### How to set up hugo?
+### Definition
+   Ollama is an open-soucer tool for running large language models (LLMs) locally on your machine. It simplifies the process of downloading, managing, and interacting with AI models via a simple command-line interface or API, enabling local infarence without needing complex infrastructure setup.
+
+### How to set up ollama?
 1. **Modify the docker-compose file**
 
-2. **Create a dockerfile**
-	- Download hugo
-	- Create and go the dedicate directory (for me the name is *me*)
-	- Create your webiste and add your template
-	- Copy your toml file to replace the one for your directory
-
-3. **Add a config.toml file**
-	- The toml file is used by hugo as a configuration file
-	- You need to add the #baseURL with your url
-	- Your need to add the theme your downloaded on the dockerfile for my case it is "m10c"
-
-4. **Modify the .nginx file**
-	- You have to add a rule to listen the dedicated directory 
-	- Add the rule for the proxy pass to listen your container
-	- include the params for the proxy for nginx
-
-### How to test your program?
-	- You need to go on the URL you passed (my url is *https://vbachele.42.fr/me*)
-	- If you see only a blank page, that means your theme is not applied it works but you need to find how to apply the theme.
-	- If you see a page it works !
-![hugo_website](images/hugo.png)
-
-## Static web page
-*For this one it is easy, I took the hugo services and I did the following changes.*
-1. **Update the .toml file**
-	- I changed the .toml file with my theme from the previous bonus to add a page about, presentation and my github link.
+  ollama:
+    build: requirements/bonus/ollama
+    container_name: ollama-ai
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./data/ollama:/root/.ollama
+      - ./data/models:/models
+    restart: unless-stopped
+    networks:
+      - network
+    env_file:
+      - .env
 
 2. **Create a dockerfile**
+FROM debian:bookworm
 
-3. **Update your docker-compose.yml**
+# Basic config
+ARG DEBIAN_FRONTEND=noninteractive
 
-4. **Update the .nginx conf file**
-	- You need to update the .conf file to listen your new image in order to display the website.
+# repor update and necesary app
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl \
+        wget \
+        git \
+        ca-certificates \
+        openssl \
+        python3 \
+        python3-pip \
+        libgl1-mesa-glx \
+        libglib2.0-0 \
+		zstd \
+    && rm -rf /var/lib/apt/lists/*
 
-4. **Create your static pages**
-	- I created the about page in markdown
-	- I created the presentation page in markdown
+# install Ollama
+RUN curl -fsSL https://ollama.com/install.sh | sh
 
-**Here is the website**
-![static web page](images/static_page.png)
+# Añadir usuario no root para seguridad (opcional)
+RUN useradd -m ollama && chown -R ollama:ollama /usr/local/bin /home/ollama && mkdir -p /root/.ollama && chown -R root:ollama /root
+
+# port
+EXPOSE 11434
+
+# initialize
+ENTRYPOINT ["ollama", "serve"]
+
+

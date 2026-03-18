@@ -6,7 +6,7 @@
 /*   By: jumarque <jumarque@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 20:20:22 by jumarque          #+#    #+#             */
-/*   Updated: 2026/02/09 13:16:57 by jumarque         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:36:50 by jumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ const char *PmergeMe::InvalidInput::what() const throw() {
 
 // Utils
 unsigned int	ft_stou(const std::string &str) {
-	std::stringstream	ss(str);
-	unsigned int		numb;
 
-	ss >> numb;
-	return (numb);
+	char	*endptr = NULL;
+	long result = std::strtol(str.c_str(), &endptr, 0);
+
+	if (result > static_cast<long>(-1U)) {
+		throw std::out_of_range(RED "number out of range" RESET);
+	}
+
+	return (static_cast<unsigned int>(result));
 }
 
 static void	printVector(const std::vector<unsigned int> &v) {
@@ -78,6 +82,18 @@ static void	printList(const std::list<unsigned int> &l){
 
 // Vectors
 
+void	PmergeMe::duplicateValue(std::vector<unsigned int> &o_v){
+	std::vector<unsigned int> v(o_v);
+	
+	if (v.size() < 2) return ;
+	
+	std::sort(v.begin(), v.end());
+
+	if (std::adjacent_find(v.begin(), v.end()) != v.end())
+		throw std::out_of_range(RED "numbers duplicated" RESET);
+}
+
+
 static	std::vector<unsigned int>
 joinVec(std::vector<unsigned int> &id, std::vector<unsigned int> &dd) {
 	std::vector<unsigned int> res;
@@ -115,11 +131,8 @@ static	std::vector<unsigned int> insertVec(std::vector<unsigned int> &v) {
 	return (joinVec(id, dd));
 }
 
-void	PmergeMe::sortVector(int argc, char *argv[]) {
-	std::vector<unsigned int> res;
-	
-	for (int i = 1; i < argc; i++)
-		res.push_back(ft_stou(argv[i]));
+void	PmergeMe::sortVector(std::vector<unsigned int>& res) {
+
 	std::cout << "\n\tVECTOR - " << BLUE "Before sorting: " << RESET;
 	printVector(res);
 
@@ -133,7 +146,7 @@ void	PmergeMe::sortVector(int argc, char *argv[]) {
 	std::cout  << "\tVECTOR - " << GREEN"After sorting : " << RESET;
 	printVector(res);
 
-	std::cout << "\nVector of " << BLUE << argc - 1 
+	std::cout << "\nVector of " << BLUE << res.size() 
 	<< " elements " << RESET << "sorted in : " 
 	<< GREEN << duration << " µs" << RESET << std::endl;
 	
@@ -141,9 +154,7 @@ void	PmergeMe::sortVector(int argc, char *argv[]) {
 
 // LIST
 
-static std::list<unsigned int> 
-joinList(std::list<unsigned int> &id, 
-std::list<unsigned int> &dd) {
+static std::list<unsigned int> joinList(std::list<unsigned int> &id, std::list<unsigned int> &dd) {
 
 	std::list<unsigned int> res;
 
@@ -192,12 +203,7 @@ static std::list<unsigned int> insertList(std::list<unsigned int> &l) {
 	return joinList(id, dd);
 }
 
-void PmergeMe::sortList(int argc, char *argv[]) {
-	std::list<unsigned int> res;
-
-	for (int i = 1; i < argc; i++) {
-		res.push_back(ft_stou(argv[i]));
-	}
+void PmergeMe::sortList(std::list<unsigned int> &res) {
 
 	std::cout << "\tLIST - " << BLUE << "Before sorting :  " << RESET;
 	printList(res);
@@ -213,7 +219,7 @@ void PmergeMe::sortList(int argc, char *argv[]) {
 	printList(res);
 	std::cout << std::endl;
 
-	std::cout << "List of " << BLUE << argc - 1 
+	std::cout << "List of " << BLUE << res.size()
 	<< " elements " << RESET << "sorted in  :  " 
 	<< GREEN << duration << " µs" << RESET << std::endl;
 }

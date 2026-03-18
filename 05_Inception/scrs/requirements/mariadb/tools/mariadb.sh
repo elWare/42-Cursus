@@ -1,27 +1,23 @@
 #!/bin/sh
 
-# 1. Initialize if empty
+# 1. Inicializar si está vacío
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     echo "Initializing MariaDB data directory..."
     mysql_install_db --user=mysql --datadir=/var/lib/mysql --skip-test-db
 fi
 
-# 2. Start MariaDB in a way that ignores grant tables temporarily
-# This allows us to configure the root user without needing the old password
+# 2. Arrancar en modo seguro para configurar
 echo "Starting MariaDB in safe mode..."
 /usr/sbin/mysqld --user=mysql --datadir=/var/lib/mysql --skip-grant-tables --skip-networking &
 PID=$!
 
-# 2. Wait for it to be ready
-# We use the CLIENT (mysqladmin) to check if the SERVER is awake
-until mysqladmin ping >/dev/null 2>&1; do
-    echo "Waiting for MariaDB..."
+# Esperar al socket (importante)
+until mysqladmin ping --silent; do
     sleep 1
 done
 
-# 3. Apply configurations
-echo "Applying SQL configurations..."
-mysql << _EOF_
+# 3. Aplicar configuraciones
+mysql -u root << _EOF_
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
 CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\`;
@@ -30,16 +26,10 @@ GRANT ALL PRIVILEGES ON \`$MYSQL_DATABASE\`.* TO '$MYSQL_USER'@'%';
 FLUSH PRIVILEGES;
 _EOF_
 
-# 4. Import WordPress data if the file exists
-if [ -f "/usr/local/bin/wordpress.sql" ]; then
-    mysql -u root -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE" < /usr/local/bin/wordpress.sql
-fi
-
-# 5. Shut down the temporary background process
-echo "Shutting down temporary MariaDB..."
-kill "$PID"
+# 4. Apagar proceso temporal CON FUERZA
+kill -s TERM "$PID"
 wait "$PID"
 
-# 6. Start MariaDB normally (as the main process)
+# 5. EJECUCIÓN FINAL (Aquí es donde estaba el fallo)
 echo "Starting MariaDB normally..."
-/usr/sbin/mysqld --user=mysql --datadir=/var/lib/mysql --bind-address=0.0.0.0
+exec /usr/sbin/mysqld --user=mysql --datadir=/var/lib/mysql --bind-address=0.0.0.0
