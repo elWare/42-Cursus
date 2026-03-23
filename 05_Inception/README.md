@@ -136,7 +136,7 @@ Nginx conf documents will be used to config our server and the right proxy conne
 - [All nginx definitions](<http://nginx.org/en/docs/http/ngx_http_core_module.html>)
 - [Nginx Command line](<https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/>)
 - [PID 1 signal handling && nginx](https://cloud.google.com/architecture/best-practices-for-building-containers#signal-handling)
-- [What is TLS(in french)](https://fr.wikipedia.org/wiki/Transport_Layer_Security)
+- [What is TLS(in french)](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
 ### Listen && Location
 - Listen will indicate to the server which request it has to accept:
