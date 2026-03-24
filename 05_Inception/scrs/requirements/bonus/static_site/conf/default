@@ -1,28 +1,22 @@
 server {
-    # Escucha en el puerto 80 (el Nginx principal le pasará el tráfico aquí)
     listen 80;
     listen [::]:80;
 
-    # Nombre del servidor interno (puede ser localhost o el nombre del servicio)
     server_name static_site;
 
-    # Directorio donde estarán tus archivos HTML
     root /var/www/html;
     index index.html;
 
     location / {
-        # Intenta servir el archivo, si no existe da error 404
         try_files $uri $uri/ =404;
     }
 
-    # Opcional: Configuración para que las imágenes carguen rápido
     location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
         expires max;
         log_not_found off;
     }
 
 	location /api/models {
-        # 'ollama-ai' es el nombre del servicio en tu docker-compose
         proxy_pass http://ollama-ai:11434/api/tags;
         proxy_set_header Host $host;
     }
