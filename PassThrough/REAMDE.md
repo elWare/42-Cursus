@@ -1,4 +1,3 @@
-```markdown
 # PCI Passthrough en Proxmox (Debian 12)
 
 Este repositorio contiene la guía técnica y los archivos de configuración necesarios para realizar un **PCI Passthrough** exitoso en servidores Proxmox basados en Debian 12. Este proyecto forma parte de mi proceso de documentación como **Junior a los cuarenta y muchos**.
@@ -24,7 +23,6 @@ Actualiza y reinicia:
 ```bash
 sudo update-grub
 sudo reboot
-
 ```
 
 ### 2. Carga de Módulos VFIO
@@ -65,8 +63,8 @@ lspci -nnk
 ## 🔗 Enlaces y Recursos
 
 * **Sitio Web:** [jjmarquez.es](https://www.jjmarquez.es)
-* **YouTube:** [@jjmarquez-es](https://www.youtube.com/%40jjmarquez-es)
-* **LinkedIn:** [jjmarquez-es](https://www.linkedin.com/in/jjmarquez-es/)
+* **YouTube:** [@jjmarquez-es](https://www.youtube.com/@jjmarquez-es)
+* **LinkedIn:** [jjmarquez-es](https://www.linkedin.com/in/jjmarquez-es)
 
 ---
 
